@@ -8,5 +8,8 @@ Vue.config.productionTip = false;
 new Vue({
   router,
   vuetify,
+  created() {
+    this.$vuetify.theme.light = true;
+  },
   render: h => h(App)
 }).$mount("#app");
