@@ -1,7 +1,7 @@
 <template>
-  <v-app>
+  <v-app light>
     <!-- APP BAR -->
-    <v-app-bar app color="#015350" dark>
+    <v-app-bar app color="primary">
       <div class="d-flex align-center">
         <v-avatar size="90">
           <v-img
@@ -11,7 +11,7 @@
             src="@/assets/logo-2.png"
           />
         </v-avatar>
-        <v-card-title class="display-1">Meal Journal</v-card-title>
+        <v-card-title class="white--text display-1">Meal Journal</v-card-title>
         <div style="margin-right:15px">testing:</div>
         <v-btn to="/Landing" style="margin-right:15px">to landing</v-btn>
         <v-btn to="/" style="margin-right:15px">to home</v-btn>

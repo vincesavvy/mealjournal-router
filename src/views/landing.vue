@@ -32,7 +32,9 @@
                 <v-text-field
                   v-model="mealName"
                   :rules="nameRules"
-                  label="Meal's Name (Example: Spaghetti, sandwich, rice and chicken...)"
+                  outlined
+                  label="Meal's Name"
+                  placeholder="(Spaghetti, sandwich, rice and chicken...)"
                   required
                 ></v-text-field>
               </v-col>
@@ -96,7 +98,9 @@ export default {
       //FORM
       mealName: "",
       nameRules: [
-        v => !!v || "Meal's name is required, if none was eaten, enter 'none' in each fields below, including this one."
+        v =>
+          !!v ||
+          "Meal's name is required, if none was eaten, enter 'none' in each fields below, including this one."
       ],
 
       protein: "",
