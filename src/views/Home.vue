@@ -1,7 +1,7 @@
 <template>
-  <div class="home">
+  <v-container fill-height>
     <Login />
-  </div>
+  </v-container>
 </template>
 
 <script>

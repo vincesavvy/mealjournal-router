@@ -1,20 +1,126 @@
 <template>
-  <v-card class="mx-auto" max-width="344" outlined>
-    <v-list-item three-line>
-      <v-list-item-content>
-        <div class="overline mb-4">OVERLINE</div>
-        <v-list-item-title class="headline mb-1">Headline 5</v-list-item-title>
-        <v-list-item-subtitle
-          >Greyhound divisely hello coldly fonwderfully</v-list-item-subtitle
-        >
-      </v-list-item-content>
+  <v-container>
+    <v-row>
+      <v-col cols="6">
+        <!-- ADD MEAL FORM -->
+        Add a meal
+        <hr />
+        <div style="margin-top: 15px">Time of meal:</div>
+        <!-- Date Picker -->
+        <v-row>
+          <v-col cols="6">
+            <v-date-picker v-model="pickerDate" width="290"></v-date-picker>
+          </v-col>
 
-      <v-list-item-avatar tile size="80" color="grey"></v-list-item-avatar>
-    </v-list-item>
+          <!-- Time Picker -->
+          <v-col cols="6">
+            <v-time-picker
+              v-model="pickerTime"
+              color="green lighten-1"
+              header-color="primary"
+              width="278"
+            ></v-time-picker>
+          </v-col>
+        </v-row>
 
-    <v-card-actions>
-      <v-btn text>Button</v-btn>
-      <v-btn text>Button</v-btn>
-    </v-card-actions>
-  </v-card>
+        <!-- Form -->
+        <v-form>
+          <v-container>
+            <!-- Meal Name Field -->
+            <v-row>
+              <v-col>
+                <v-text-field
+                  v-model="mealName"
+                  :rules="nameRules"
+                  label="Meal's Name (Example: Spaghetti, sandwich, rice and chicken...)"
+                  required
+                ></v-text-field>
+              </v-col>
+            </v-row>
+
+            <!-- Protein Field -->
+            <v-row>
+              <v-col>
+                <v-text-field
+                  v-model="protein"
+                  :rules="proteinRules"
+                  label="Protein Source (Example: chicken, fish, dairy, beans, pork, beef, tofu...)"
+                  required
+                ></v-text-field>
+              </v-col>
+            </v-row>
+
+            <!-- Vegetable Field -->
+            <v-row>
+              <v-col>
+                <v-text-field
+                  v-model="veggies"
+                  :rules="veggiesRules"
+                  label="Vegetable Source (Example: carrots, tomatoes, cabbage, salad, corn, cucumber...)"
+                  required
+                ></v-text-field>
+              </v-col>
+            </v-row>
+
+            <!-- Carbs Field -->
+            <v-row>
+              <v-col>
+                <v-text-field
+                  v-model="carbs"
+                  :rules="carbsRules"
+                  label="Carbohydrates Source (Example: bread, pastas, potatoes, quinoa, oats...)."
+                  required
+                ></v-text-field>
+              </v-col>
+            </v-row>
+          </v-container>
+        </v-form>
+      </v-col>
+
+      <v-col cols="6">
+        Past meals
+        <hr />
+      </v-col>
+    </v-row>
+  </v-container>
 </template>
+
+<script>
+export default {
+  data() {
+    return {
+      // date picker
+      pickerDate: new Date().toISOString().substr(0, 10),
+      // time picker
+      pickerTime: null,
+      //FORM
+      mealName: "",
+      nameRules: [
+        v => !!v || "Meal's name is required, if none was eaten, enter 'none' in each fields below, including this one."
+      ],
+
+      protein: "",
+      proteinRules: [
+        v =>
+          !!v || "Protein source is required, if none were eaten, enter 'none'."
+      ],
+
+      veggies: "",
+      veggiesRules: [
+        v =>
+          !!v ||
+          "Vegetable source is required, if none were eaten, enter 'none'."
+      ],
+
+      carbs: "",
+      carbsRules: [
+        v =>
+          !!v ||
+          "Carbohydrates source is required, if none were eaten, enter 'none'."
+      ]
+
+      // CALENDAR
+    };
+  }
+};
+</script>

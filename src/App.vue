@@ -1,5 +1,6 @@
 <template>
   <v-app>
+    <!-- APP BAR -->
     <v-app-bar app color="#015350" dark>
       <div class="d-flex align-center">
         <v-avatar size="90">
@@ -10,15 +11,17 @@
             src="@/assets/logo-2.png"
           />
         </v-avatar>
-        <v-btn to="/landing">Route testing bacon bacon</v-btn>
         <v-card-title class="display-1">Meal Journal</v-card-title>
+        <div style="margin-right:15px">testing:</div>
+        <v-btn to="/Landing" style="margin-right:15px">to landing</v-btn>
+        <v-btn to="/" style="margin-right:15px">to home</v-btn>
       </div>
 
       <v-spacer></v-spacer>
 
       <v-btn rounded outlined>Login</v-btn>
     </v-app-bar>
-
+    <!-- ROUTER INTEGRATION -->
     <v-content>
       <router-view />
     </v-content>
