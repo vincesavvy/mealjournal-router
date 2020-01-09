@@ -14,9 +14,7 @@
         {{ $t("line1") }}
       </div>
       <br />
-      <div style="text-align:center">
-        {{ $t("line2") }}
-      </div>
+      <div style="text-align:center">{{ $t("line2") }}</div>
     </v-card-text>
     <hr style="margin:1em" />
 
@@ -45,20 +43,18 @@
 
           <v-row align="center" justify="center">
             <v-form ref="form" v-model="valid" :lazy-validation="lazy">
-              <v-text-field
-                v-model="email"
-                :rules="emailRules"
-                label="E-mail"
-                required
-              ></v-text-field>
+              <v-text-field v-model="email" :rules="emailRules" required>
+                <template v-slot:label>{{ $t("line4") }}</template>
+              </v-text-field>
 
               <v-text-field
                 v-model="password"
                 :rules="passwordRules"
-                label="Password"
                 required
                 type="password"
-              ></v-text-field>
+              >
+                <template v-slot:label>{{ $t("line5") }}</template>
+              </v-text-field>
 
               <div align="center">
                 <v-btn
@@ -85,11 +81,11 @@ export default {
     valid: true,
     email: "",
     emailRules: [
-      v => !!v || "E-mail is required",
-      v => /.+@.+\..+/.test(v) || "E-mail must be valid"
+      v => !!v || "Required / Requis",
+      v => /.+@.+\..+/.test(v) || "Not valid / Non valide"
     ],
     password: "",
-    passwordRules: [v => !!v || "Password is required"],
+    passwordRules: [v => !!v || "Required / Requis"],
     select: null,
     lazy: false
   }),
@@ -124,12 +120,17 @@ export default {
   "en": {
     "line1": "In order to use the MealJournal app, you are required to log in.",
     "line2": "Use a Google or Facebook account, or use your email.",
-    "line3": "email login:"
+    "line3": "email login:",
+    "line4": "Email",
+    "line5": "Password"
   },
   "fr": {
-    "line1": "Afin d'utiliser l'application MealJournal, vous devrez vous connecter a votre compte.",
-    "line2": "Utilisez un compte Google ou Facebook, ou connectez-vous avec votre couuriel.",
-    "line3": "Connection a l'aide du courriel:"
+    "line1": "Afin d'utiliser l'application MealJournal, vous devrez vous connecter à votre compte.",
+    "line2": "Utilisez un compte Google ou Facebook, sinon connectez-vous avec votre courriel.",
+    "line3": "Connection à l'aide du courriel:",
+    "line4": "Courriel:",
+    "line5": "Mot de passe"
+
 
   }
 }

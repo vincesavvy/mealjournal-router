@@ -196,7 +196,7 @@ export default {
 <i18n>
 {
   "en": {
-    "line1": "Meal's Name (Example: spaghetti, sandwich, rice and chicken...)",
+    "line1": "Meal's name (Example: spaghetti, sandwich, rice and chicken...)",
     "line2": "Protein Source (Example: chicken, fish, dairy, beans, pork, beef, tofu...)",
     "line3": "Vegetable Source (Example: carrots, tomatoes, cabbage, salad, corn, cucumber...)",
     "line4": "Carbohydrates Source (Example: bread, pastas, potatoes, quinoa, oats...)",
