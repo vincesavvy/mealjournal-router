@@ -28,7 +28,7 @@
             </v-col>
 
             <v-col cols="6" align="center">
-              <v-btn small outlined color="indigo">
+              <v-btn small outlined color="indigo" @click="facebook()">
                 <v-icon small left>mdi-facebook</v-icon>Facebook
               </v-btn>
             </v-col>
@@ -76,7 +76,7 @@
                   $t("line6")
                 }}</v-btn>
                 <!-- line -->
-                <v-divider class="mx-4" :inset="inset" vertical></v-divider>
+                <v-divider class="mx-4" inset vertical></v-divider>
                 <v-btn text x-small color="primary">{{ $t("line7") }}</v-btn>
               </v-toolbar-items>
             </v-toolbar>
@@ -108,6 +108,19 @@ export default {
     /* eslint-disable no-alert, no-console */
     google() {
       var provider = new firebase.auth.GoogleAuthProvider();
+      firebase
+        .auth()
+        .signInWithPopup(provider)
+        .then(() => {
+          this.$router.push("/landing");
+        })
+        .catch(e => {
+          console.log(e);
+        });
+    },
+
+    facebook() {
+      var provider = new firebase.auth.FacebookAuthProvider();
       firebase
         .auth()
         .signInWithPopup(provider)
