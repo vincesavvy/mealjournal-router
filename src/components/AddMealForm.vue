@@ -110,11 +110,25 @@
         <!-- Protein Field -->
         <v-row>
           <v-col>
-            <v-text-field v-model="protein">
+            <v-select v-model="value" :items="proteinOptions" attach multiple chips>
               <template v-slot:label>{{ $t("line2") }}</template>
-            </v-text-field>
+            </v-select>
+            <v-row>
+              <v-col cols="2">
+                <v-checkbox v-model="checkbox1">
+                  <template v-slot:label>{{ $t("line119") }}</template>
+                </v-checkbox>
+              </v-col>
+              <v-col cols="10">
+                <v-text-field v-if="checkbox1" v-model="proteinsOther">
+                  <template v-slot:label>{{ $t("line120") }}</template>
+                </v-text-field>
+              </v-col>
+            </v-row>
           </v-col>
         </v-row>
+
+        <!-- div if other is true then text field -->
 
         <!-- Vegetable Field -->
         <v-row>
@@ -160,6 +174,22 @@
 export default {
   data() {
     return {
+      value: null,
+
+      checkbox1: false,
+
+      proteinsOther: "",
+
+      proteinOptions: [
+        "chicken",
+        "fish",
+        "dairy",
+        "beans",
+        "pork",
+        "beef",
+        "tofu"
+      ],
+
       // date picker
       pickerDate: new Date().toISOString().substr(0, 10),
       // time picker
@@ -197,7 +227,7 @@ export default {
 {
   "en": {
     "line1": "Meal's name (Example: spaghetti, sandwich, rice and chicken...)",
-    "line2": "Protein source (Example: chicken, fish, dairy, beans, pork, beef, tofu...)",
+    "line2": "Protein sources",
     "line3": "Vegetable source (Example: carrots, tomatoes, cabbage, salad, corn, cucumber...)",
     "line4": "Carbohydrates source (Example: bread, pastas, potatoes, quinoa, oats...)",
     "line104": "Place where the meal was consumed (Example: kitchen, living room, bedroom...)",
@@ -214,7 +244,9 @@ export default {
     "line115": "really hungry",
     "line116": "Reason why you had this meal (Example: I was hungry, It was noon...)",
     "line117": "Mood after eating (Example: grumpy, fine, excited...)",
-    "line118": "Level of fullness:"
+    "line118": "Level of fullness:",
+    "line119": "Other",
+    "line120": "Other source of proteins"
 
   },
   "fr": {
@@ -236,8 +268,9 @@ export default {
     "line115": "Très faim",
     "line116": "Raison pour laquelle le repas à été mangé (Exemple: j'avais faim, il était midi...)",
     "line117": "Humeur après avoir mangé (Exemple: marabout, bien, excité...)",
-    "line118": "Niveau de satiété:"
-
+    "line118": "Niveau de satiété:",
+    "line119": "Autre",
+    "line120": "Autre source de proteines"
   }
 }
 </i18n>
