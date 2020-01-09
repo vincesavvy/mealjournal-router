@@ -19,6 +19,14 @@
       </div>
 
       <v-spacer></v-spacer>
+      <div v-if="userLoggedIn" class="mr-2">
+        USER
+        <v-avatar color="indigo" size="35">
+          <v-img v-if="userHasAvatar" src="@/assets/logo-2.png" />
+          <v-img v-else src="@/assets/default-avatar.png" />
+        </v-avatar>
+      </div>
+
       <v-btn
         rounded
         outlined
@@ -49,8 +57,13 @@
 export default {
   name: "App",
   data() {
-    return { langs: ["en", "fr"] };
+    return {
+      userLoggedIn: true,
+      userHasAvatar: false,
+      langs: ["en", "fr"]
+    };
   },
+
   methods: {
     english() {
       this.$i18n.locale = "en";

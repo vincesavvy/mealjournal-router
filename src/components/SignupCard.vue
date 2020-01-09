@@ -41,7 +41,13 @@
         <!-- button -->
         <v-row>
           <v-card-actions>
-            <v-btn color="orange" outlined>{{ $t("validate button") }}</v-btn>
+            <v-btn
+              :disabled="!valid"
+              color="success"
+              class="mr-4"
+              @click="validate"
+              >{{ $t("validate button") }}</v-btn
+            >
           </v-card-actions>
         </v-row>
       </v-container>

@@ -1,7 +1,12 @@
 <template>
   <!-- card -->
-  <v-card class="mx-auto" max-width="400">
-    <v-img class="white--text align-end" height="200px" contain src="@/assets/login-image.png"></v-img>
+  <v-card class="mx-auto" max-width="450">
+    <v-img
+      class="white--text align-end"
+      height="200px"
+      contain
+      src="@/assets/login-image.png"
+    ></v-img>
 
     <v-card-text class="text--primary">
       <div style="text-align:center">{{ $t("line1") }}</div>
@@ -40,35 +45,42 @@
                 <template v-slot:label>{{ $t("line4") }}</template>
               </v-text-field>
 
-              <v-text-field v-model="password" :rules="passwordRules" required type="password">
+              <v-text-field
+                v-model="password"
+                :rules="passwordRules"
+                required
+                type="password"
+              >
                 <template v-slot:label>{{ $t("line5") }}</template>
               </v-text-field>
 
               <div align="center">
-                <v-btn :disabled="!valid" color="success" class="mr-4" @click="validate">Validate</v-btn>
+                <v-btn
+                  :disabled="!valid"
+                  color="success"
+                  class="mr-4"
+                  @click="validate"
+                  >Validate</v-btn
+                >
               </div>
             </v-form>
           </v-row>
           <br />
+          <br />
           <!-- Signup button -->
-          <v-container>
+          <v-row align="center" justify="center">
+            <v-col></v-col>
             <v-toolbar flat dense>
               <v-toolbar-items>
-                <v-btn text small rounded color="primary">
-                  {{
+                <v-btn to="/signup" text x-small rounded color="primary">{{
                   $t("line6")
-                  }}
-                </v-btn>
+                }}</v-btn>
                 <!-- line -->
                 <v-divider class="mx-4" :inset="inset" vertical></v-divider>
-                <v-btn text small color="primary">
-                  {{
-                  $t("line7")
-                  }}
-                </v-btn>
+                <v-btn text x-small color="primary">{{ $t("line7") }}</v-btn>
               </v-toolbar-items>
             </v-toolbar>
-          </v-container>
+          </v-row>
         </v-container>
       </v-col>
     </v-row>
@@ -126,7 +138,7 @@ export default {
     "line4": "Email",
     "line5": "Password",
     "line6": "new user sign-up",
-    "line7": "Sign up!"
+    "line7": "Forgot your password?"
   },
   "fr": {
     "line1": "Afin d'utiliser l'application MealJournal, vous devrez vous connecter à votre compte.",
@@ -134,8 +146,8 @@ export default {
     "line3": "Connection à l'aide du courriel:",
     "line4": "Courriel:",
     "line5": "Mot de passe",
-    "line6": "Pas de compte?",
-    "line7": "Creez un compte!"
+    "line6": "nouvel utilisateur",
+    "line7": "oublié votre mot de passe"
 
 
 
