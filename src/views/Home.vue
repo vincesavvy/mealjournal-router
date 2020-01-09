@@ -1,6 +1,8 @@
 <template>
   <v-container fill-height>
-    <Login />
+    <v-row>
+      <Login />
+    </v-row>
   </v-container>
 </template>
 

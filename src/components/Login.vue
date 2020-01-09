@@ -10,10 +10,12 @@
 
     <v-card-text class="text--primary">
       <div style="text-align:center">
-        In order to use the MealJournal app, you are required to log in.
+        <!-- See i18n in the bottom for the list of dictionary lines. -->
+        {{ $t("line1") }}
       </div>
-      <div style="text-align:center, color:red">
-        Use a Google or Facebook account, or use your email.
+      <br />
+      <div style="text-align:center">
+        {{ $t("line2") }}
       </div>
     </v-card-text>
     <hr style="margin:1em" />
@@ -24,7 +26,7 @@
         <div>
           <v-row align="center" justify="center">
             <v-col cols="6" align="center">
-              <v-btn small outlined color="red">
+              <v-btn small outlined color="red" @click="google()">
                 <v-icon small left>mdi-google-glass</v-icon>Google
               </v-btn>
             </v-col>
@@ -39,7 +41,7 @@
 
         <!-- Email login -->
         <v-container>
-          <p class="caption">Or, use email login instead:</p>
+          <p class="caption">{{ $t("line3") }}</p>
 
           <v-row align="center" justify="center">
             <v-form ref="form" v-model="valid" :lazy-validation="lazy">
@@ -76,6 +78,8 @@
 </template>
 
 <script>
+import firebase from "firebase/app";
+
 export default {
   data: () => ({
     valid: true,
@@ -91,6 +95,20 @@ export default {
   }),
 
   methods: {
+    /* eslint-disable no-alert, no-console */
+    google() {
+      var provider = new firebase.auth.GoogleAuthProvider();
+      firebase
+        .auth()
+        .signInWithPopup(provider)
+        .then(() => {
+          this.$router.push("/landing");
+        })
+        .catch(e => {
+          console.log(e);
+        });
+    },
+
     validate() {
       if (this.$refs.form.validate()) {
         this.snackbar = true;
@@ -99,3 +117,20 @@ export default {
   }
 };
 </script>
+
+/********************** ****** DICTIONARY****** **********************/
+<i18n>
+{
+  "en": {
+    "line1": "In order to use the MealJournal app, you are required to log in.",
+    "line2": "Use a Google or Facebook account, or use your email.",
+    "line3": "email login:"
+  },
+  "fr": {
+    "line1": "Afin d'utiliser l'application MealJournal, vous devrez vous connecter a votre compte.",
+    "line2": "Utilisez un compte Google ou Facebook, ou connectez-vous avec votre couuriel.",
+    "line3": "Connection a l'aide du courriel:"
+
+  }
+}
+</i18n>
