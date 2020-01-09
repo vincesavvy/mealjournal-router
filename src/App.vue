@@ -13,8 +13,9 @@
         </v-avatar>
         <v-card-title class="white--text display-1">MealJournal</v-card-title>
         <div style="margin-right:15px">testing:</div>
-        <v-btn to="/Landing" style="margin-right:15px">to landing</v-btn>
         <v-btn to="/" style="margin-right:15px">to home</v-btn>
+        <v-btn to="/Landing" style="margin-right:15px">to landing</v-btn>
+        <v-btn to="/signup" style="margin-right:15px">to signup</v-btn>
       </div>
 
       <v-spacer></v-spacer>
@@ -36,15 +37,6 @@
         class="font-italic text-capitalize mr-2"
         >fr</v-btn
       >
-      <!-- <div class="locale-changer">
-        <select v-model="$i18n.locale">
-          <option v-for="(lang, i) in langs" :key="`Lang${i}`" :value="lang">
-            {{ lang }}
-          </option>
-        </select>
-      </div> -->
-
-      <!-- <v-btn rounded outlined>Login</v-btn> -->
     </v-app-bar>
     <!-- ROUTER INTEGRATION -->
     <v-content>

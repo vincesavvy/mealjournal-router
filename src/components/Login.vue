@@ -9,10 +9,7 @@
     ></v-img>
 
     <v-card-text class="text--primary">
-      <div style="text-align:center">
-        <!-- See i18n in the bottom for the list of dictionary lines. -->
-        {{ $t("line1") }}
-      </div>
+      <div style="text-align:center">{{ $t("line1") }}</div>
       <br />
       <div style="text-align:center">{{ $t("line2") }}</div>
     </v-card-text>
