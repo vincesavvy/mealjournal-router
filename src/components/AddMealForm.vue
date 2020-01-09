@@ -197,13 +197,13 @@ export default {
 {
   "en": {
     "line1": "Meal's name (Example: spaghetti, sandwich, rice and chicken...)",
-    "line2": "Protein Source (Example: chicken, fish, dairy, beans, pork, beef, tofu...)",
-    "line3": "Vegetable Source (Example: carrots, tomatoes, cabbage, salad, corn, cucumber...)",
-    "line4": "Carbohydrates Source (Example: bread, pastas, potatoes, quinoa, oats...)",
+    "line2": "Protein source (Example: chicken, fish, dairy, beans, pork, beef, tofu...)",
+    "line3": "Vegetable source (Example: carrots, tomatoes, cabbage, salad, corn, cucumber...)",
+    "line4": "Carbohydrates source (Example: bread, pastas, potatoes, quinoa, oats...)",
     "line104": "Place where the meal was consumed (Example: kitchen, living room, bedroom...)",
     "line105": "With whom was the meal consumed (Example: husband, wife, mother, alone...)",
     "line106": "Level of hunger:",
-    "line107": "Mood before eating (Example: grumpy, fine, excited...)",
+    "line107": "Mood before eating (Example: stressed, grumpy, fine, excited...)",
     "line108": "Not at all",
     "line109": "Somewhat full",
     "line110": "Full",
@@ -218,14 +218,14 @@ export default {
 
   },
   "fr": {
-    "line1": "Nom du repas (Example: spaghetti, sandwich, riz au poulet...) ",
-    "line2": "Source de protéines (Example: poulet, poisson, produits laitiers, légumineuse, porc, boeuf, tofu...)",
-    "line3": "Source de légumes (Example: carottes, tomates, chou, salade, maïs, concombre...)",
-    "line4": "Source de féculents (Example: pain, pâtes, pommes de terres, quinoa, avoine...)",
-    "line104": "Endroit où le repas à été mangé(Example: cuisine, salon, chambre...)",
-    "line105": "Avec qui le repas à-t-il été mangé (Example: Époux, mère, seul...)",
-    "line106": "Nivau de faim:",
-    "line107": "Humeur avant de manger (Example: marabout, bien, excité...)",
+    "line1": "Nom du repas (Exemple: spaghetti, sandwich, riz au poulet...) ",
+    "line2": "Source de protéines (Exemple: poulet, poisson, produits laitiers, légumineuse, porc, boeuf, tofu...)",
+    "line3": "Source de légumes (Exemple: carottes, tomates, chou, salade, maïs, concombre...)",
+    "line4": "Source de féculents (Exemple: pain, pâtes, pommes de terres, quinoa, avoine...)",
+    "line104": "Endroit où le repas à été mangé (Exemple: cuisine, salon, chambre...)",
+    "line105": "Avec qui le repas à-t-il été mangé (Exemple: Époux, mère, seul...)",
+    "line106": "Niveau de faim:",
+    "line107": "Humeur avant de manger (Exemple: stressé, marabout, bien, excité...)",
     "line108": "Pas du tout",
     "line109": "Un peu rassasié",
     "line110": "Plein",
@@ -234,9 +234,9 @@ export default {
     "line113": "Un peu faim",
     "line114": "Faim normale",
     "line115": "Très faim",
-    "line116": "Raison pour laquelle le repas à été mangé (Example: j'avais faim, il était midi...)",
-    "line117": "Humeur après avoir manger (Example: marabout, bien, excité...)",
-    "line118": "Nivau de satiété:"
+    "line116": "Raison pour laquelle le repas à été mangé (Exemple: j'avais faim, il était midi...)",
+    "line117": "Humeur après avoir mangé (Exemple: marabout, bien, excité...)",
+    "line118": "Niveau de satiété:"
 
   }
 }
