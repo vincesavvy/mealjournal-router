@@ -110,7 +110,13 @@
         <!-- Protein Field -->
         <v-row>
           <v-col>
-            <v-select v-model="value" :items="proteinOptions" attach multiple chips>
+            <v-select
+              v-model="value"
+              :items="proteinOptions"
+              attach
+              multiple
+              chips
+            >
               <template v-slot:label>{{ $t("line2") }}</template>
             </v-select>
             <v-row>
