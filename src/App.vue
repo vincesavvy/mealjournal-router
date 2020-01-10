@@ -19,13 +19,21 @@
       </div>
 
       <v-spacer></v-spacer>
-      <div v-if="userLoggedIn" class="mr-2">
-        USER
+      <div v-if="user" class="mr-2">
+        {{ user.name }}
         <v-avatar color="indigo" size="35">
-          <v-img v-if="userHasAvatar" src="@/assets/logo-2.png" />
-          <v-img v-else src="@/assets/default-avatar.png" />
+          <v-img :src="user.photo" />
         </v-avatar>
       </div>
+
+      <div v-else class="mr-2">
+        NEED A LINE 118n
+        <v-avatar color="indigo" size="35">
+          <v-img src="@/assets/default-avatar.png" />
+        </v-avatar>
+      </div>
+
+      <!-- <v-img  src="@/assets/default-avatar.png" /> -->
 
       <v-btn
         rounded
@@ -70,6 +78,14 @@ export default {
     },
     french() {
       this.$i18n.locale = "fr";
+    }
+  },
+  created() {
+    this.$store.dispatch("getUserInfo");
+  },
+  computed: {
+    user() {
+      return this.$store.getters.profileInfo;
     }
   }
 };

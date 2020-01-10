@@ -18,7 +18,7 @@
         {{ $t("line3") }}
         <hr />
         <div style="margin-top: 15px">{{ $t("line4") }}</div>
-
+        {{ user }}
         <!-- component -->
         <PastMeals />
         <PastMeals />
@@ -33,10 +33,14 @@ import AddMealForm from "@/components/AddMealForm.vue";
 
 // This is registering the components.
 export default {
+  data() {
+    return {};
+  },
   components: {
     PastMeals,
     AddMealForm
-  }
+  },
+  methods: {}
 };
 //dictionary use: {{ $t("line3") }}
 </script>
