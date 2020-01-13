@@ -14,13 +14,15 @@ export default new Vuex.Store({
     }
   },
   actions: {
+    /* eslint-disable no-alert, no-console */
     getUserInfo({ commit }) {
       firebase.auth().onAuthStateChanged(function(user) {
-        // console.log(user);
+        //console.log(user);
         let info = {
           name: user.displayName,
           photo: user.photoURL,
-          email: user.email
+          email: user.email,
+          userID: user.uid
         };
         commit("setUserInfo", info);
       });
