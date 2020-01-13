@@ -62,10 +62,11 @@
     <!-- *** -->
     <!-- Small screens -->
     <!-- *** -->
+
     <template v-else>
       <v-app-bar app color="primary">
         <div class="d-flex align-center">
-          <v-avatar size="90">
+          <v-avatar size="80">
             <v-img
               alt="Meal Logo"
               class="shrink mr-2"
