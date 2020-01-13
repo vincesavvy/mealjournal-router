@@ -32,7 +32,7 @@
     </template>
 
     <!-- actual profile dialog -->
-    <v-dialog v-model="profileDialog" max-width="344">
+    <v-dialog v-model="profileDialog" max-width="344" persistent>
       <v-card class="mx-auto">
         <v-container>
           <v-card-title>Please good sir or ma'am!</v-card-title>
@@ -43,10 +43,7 @@
           </p>
           <p>How would you like to be called?</p>
           <v-container>
-            <v-text-field
-              label="Display name"
-              v-model="userDisplayName"
-            ></v-text-field>
+            <v-text-field label="Display name" v-model="userDisplayName"></v-text-field>
           </v-container>
           <v-container>We already know your email:</v-container>
           <v-container>
@@ -54,15 +51,8 @@
           </v-container>
 
           <v-card-actions>
-            <v-btn text color="deep-purple accent-4" @click="saveInfoDB"
-              >Save</v-btn
-            >
-            <v-btn
-              text
-              color="deep-purple accent-4"
-              @click="profileDialog = false"
-              >CLOSE</v-btn
-            >
+            <v-btn text color="deep-purple accent-4" @click="saveInfoDB">Save</v-btn>
+            <v-btn text color="deep-purple accent-4" @click="profileDialog = false">CLOSE</v-btn>
           </v-card-actions>
         </v-container>
       </v-card>
