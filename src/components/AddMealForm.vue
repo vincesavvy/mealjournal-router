@@ -1,5 +1,8 @@
 <template>
   <v-container>
+    {{ $t("line0.1") }}
+    <hr />
+    <div style="margin-top: 15px">{{ $t("line0.2") }}</div>
     <v-row>
       <v-col cols="6">
         <v-date-picker v-model="pickerDate" width="290"></v-date-picker>
@@ -232,6 +235,8 @@ export default {
 <i18n>
 {
   "en": {
+    "line0.1": "Add a meal",
+    "line0.2": "Time of meal:",
     "line1": "Meal's name (Example: spaghetti, sandwich, rice and chicken...)",
     "line2": "Protein sources",
     "line3": "Vegetable source (Example: carrots, tomatoes, cabbage, salad, corn, cucumber...)",
@@ -256,6 +261,8 @@ export default {
 
   },
   "fr": {
+    "line0.1": "Ajouter un repas",
+    "line0.2": "Date et heure du repas:",
     "line1": "Nom du repas (Exemple: spaghetti, sandwich, riz au poulet...) ",
     "line2": "Source de protéines (Exemple: poulet, poisson, produits laitiers, légumineuse, porc, boeuf, tofu...)",
     "line3": "Source de légumes (Exemple: carottes, tomates, chou, salade, maïs, concombre...)",

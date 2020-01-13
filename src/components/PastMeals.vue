@@ -1,5 +1,14 @@
 <template>
   <v-container>
+    {{ $t("line0.1") }}
+    <hr />
+    <div style="margin-top: 15px">{{ $t("line0.2") }}</div>
+
+    <br />
+
+    <!-- Will need to map with "v-for" through the backend -->
+    <!-- Will need to be a component -->
+
     <v-card class="mx-auto" max-width="400" tile>
       <!-- Date field -->
       <v-list-item>
@@ -36,6 +45,8 @@ export default {};
 <i18n>
 {
   "en": {
+    "line0.1": "Past meals",
+    "line0.2": "List of past meals:",
     "line1": "Date",
     "line2": "Name:",
     "line3": "Sources:",
@@ -44,6 +55,8 @@ export default {};
     "line6": "Carbohydrates:"
   },
   "fr": {
+    "line0.1": "Anciens repas",
+    "line0.2": "Liste des ancients repas:",
     "line1": "Date",
     "line2": "Nom:",
     "line3": "Sources:",

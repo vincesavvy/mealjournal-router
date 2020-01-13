@@ -3,24 +3,11 @@
     <v-row>
       <v-col cols="6">
         <!-- ADD MEAL FORM -->
-        {{ $t("line1") }}
-        <hr />
-        <div style="margin-top: 15px">{{ $t("line2") }}</div>
-
-        <!-- component -->
         <AddMealForm />
       </v-col>
 
-      <!-- PAST-MEALS -->
-      <!-- Will need to map with "v-for" through the backend -->
-      <!-- Will need to be a component -->
       <v-col cols="6">
-        {{ $t("line3") }}
-        <hr />
-        <div style="margin-top: 15px">{{ $t("line4") }}</div>
-        {{ user }}
-        <!-- component -->
-        <PastMeals />
+        <!-- PAST-MEALS -->
         <PastMeals />
       </v-col>
     </v-row>
