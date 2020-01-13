@@ -1,182 +1,215 @@
 <template>
-  <v-container>
-    {{ $t("line0.1") }}
-    <hr />
-    <div style="margin-top: 15px">{{ $t("line0.2") }}</div>
-    <v-row>
-      <v-col cols="6">
-        <v-date-picker v-model="pickerDate" width="290"></v-date-picker>
-      </v-col>
-
-      <!-- Time Picker -->
-      <v-col cols="6">
-        <v-time-picker
-          v-model="pickerTime"
-          color="green lighten-1"
-          header-color="primary"
-          width="278"
-        ></v-time-picker>
-      </v-col>
-    </v-row>
-
-    <!-- Form -->
-    <v-form>
+  <div>
+    <template>
       <v-container>
-        <!-- Meal Name Field -->
-        <v-row>
-          <v-col>
-            <v-text-field v-model="mealName" :rules="mealNameRules" required>
-              <template v-slot:label>{{ $t("line1") }}</template>
-            </v-text-field>
-          </v-col>
-        </v-row>
+        {{ $t("line0.1") }}
+        <hr />
+        <div style="margin-top: 15px">{{ $t("line0.2") }}</div>
 
-        <!-- Place Field -->
-        <v-row>
-          <v-col>
-            <v-text-field v-model="place">
-              <template v-slot:label>{{ $t("line104") }}</template>
-            </v-text-field>
-          </v-col>
-        </v-row>
+        <!-- The date and time pickers -->
+        <!-- Big screens -->
+        <div v-if="$vuetify.breakpoint.mdAndUp">
+          <v-row>
+            <v-col cols="6">
+              <v-date-picker v-model="pickerDate" width="290"></v-date-picker>
+            </v-col>
+            <!-- Time Picker -->
+            <v-col cols="6">
+              <v-time-picker
+                v-model="pickerTime"
+                color="green lighten-1"
+                header-color="primary"
+                width="278"
+              ></v-time-picker>
+            </v-col>
+          </v-row>
+        </div>
 
-        <!-- With Whom Field -->
-        <v-row>
-          <v-col>
-            <v-text-field v-model="withWhom">
-              <template v-slot:label>{{ $t("line105") }}</template>
-            </v-text-field>
-          </v-col>
-        </v-row>
+        <!-- Small screens -->
+        <div v-else>
+          <v-row>
+            <v-col cols="12">
+              <v-date-picker v-model="pickerDate" width="290"></v-date-picker>
+            </v-col>
+          </v-row>
+          <!-- Time Picker -->
+          <v-row>
+            <v-col cols="12">
+              <v-time-picker
+                v-model="pickerTime"
+                color="green lighten-1"
+                header-color="primary"
+                width="278"
+              ></v-time-picker>
+            </v-col>
+          </v-row>
+        </div>
 
-        <!-- Hunger Field -->
-        <div>{{ $t("line106") }}</div>
-        <v-row>
-          <v-col>
-            <v-container fluid>
-              <v-radio-group v-model="hunger" row>
-                <v-radio value="radio-1">
-                  <template v-slot:label>{{ $t("line112") }}</template>
-                </v-radio>
-
-                <v-radio value="radio-2">
-                  <template v-slot:label>{{ $t("line113") }}</template>
-                </v-radio>
-
-                <v-radio value="radio-3">
-                  <template v-slot:label>{{ $t("line114") }}</template>
-                </v-radio>
-
-                <v-radio value="radio-4">
-                  <template v-slot:label>{{ $t("line115") }}</template>
-                </v-radio>
-              </v-radio-group>
-            </v-container>
-          </v-col>
-        </v-row>
-
-        <!-- Mood Field -->
-        <v-row>
-          <v-col>
-            <v-text-field v-model="mood">
-              <template v-slot:label>{{ $t("line107") }}</template>
-            </v-text-field>
-          </v-col>
-        </v-row>
-
-        <!-- Fullness Field -->
-        <div>{{ $t("line118") }}</div>
-        <v-row>
-          <v-col>
-            <v-container fluid>
-              <v-radio-group v-model="fullness" row>
-                <v-radio value="radio-1">
-                  <template v-slot:label>{{ $t("line108") }}</template>
-                </v-radio>
-
-                <v-radio value="radio-2">
-                  <template v-slot:label>{{ $t("line109") }}</template>
-                </v-radio>
-
-                <v-radio value="radio-3">
-                  <template v-slot:label>{{ $t("line110") }}</template>
-                </v-radio>
-
-                <v-radio value="radio-4">
-                  <template v-slot:label>{{ $t("line111") }}</template>
-                </v-radio>
-              </v-radio-group>
-            </v-container>
-          </v-col>
-        </v-row>
-
-        <!-- Protein Field -->
-        <v-row>
-          <v-col>
-            <v-select
-              v-model="value"
-              :items="proteinOptions"
-              attach
-              multiple
-              chips
-            >
-              <template v-slot:label>{{ $t("line2") }}</template>
-            </v-select>
+        <!-- Form -->
+        <v-form>
+          <v-container>
+            <!-- Meal Name Field -->
             <v-row>
-              <v-col cols="2">
-                <v-checkbox v-model="checkbox1">
-                  <template v-slot:label>{{ $t("line119") }}</template>
-                </v-checkbox>
-              </v-col>
-              <v-col cols="10">
-                <v-text-field v-if="checkbox1" v-model="proteinsOther">
-                  <template v-slot:label>{{ $t("line120") }}</template>
+              <v-col>
+                <v-text-field
+                  v-model="mealName"
+                  :rules="mealNameRules"
+                  required
+                >
+                  <template v-slot:label>{{ $t("line1") }}</template>
                 </v-text-field>
               </v-col>
             </v-row>
-          </v-col>
-        </v-row>
 
-        <!-- div if other is true then text field -->
+            <!-- Place Field -->
+            <v-row>
+              <v-col>
+                <v-text-field v-model="place">
+                  <template v-slot:label>{{ $t("line104") }}</template>
+                </v-text-field>
+              </v-col>
+            </v-row>
 
-        <!-- Vegetable Field -->
-        <v-row>
-          <v-col>
-            <v-text-field v-model="veggies">
-              <template v-slot:label>{{ $t("line3") }}</template>
-            </v-text-field>
-          </v-col>
-        </v-row>
+            <!-- With Whom Field -->
+            <v-row>
+              <v-col>
+                <v-text-field v-model="withWhom">
+                  <template v-slot:label>{{ $t("line105") }}</template>
+                </v-text-field>
+              </v-col>
+            </v-row>
 
-        <!-- Carbs Field -->
-        <v-row>
-          <v-col>
-            <v-text-field v-model="carbs">
-              <template v-slot:label>{{ $t("line4") }}</template>
-            </v-text-field>
-          </v-col>
-        </v-row>
+            <!-- Hunger Field -->
+            <div>{{ $t("line106") }}</div>
+            <v-row>
+              <v-col>
+                <v-container fluid>
+                  <v-radio-group v-model="hunger" row>
+                    <v-radio value="radio-1">
+                      <template v-slot:label>{{ $t("line112") }}</template>
+                    </v-radio>
 
-        <!-- reason Field -->
-        <v-row>
-          <v-col>
-            <v-text-field v-model="reason">
-              <template v-slot:label>{{ $t("line116") }}</template>
-            </v-text-field>
-          </v-col>
-        </v-row>
+                    <v-radio value="radio-2">
+                      <template v-slot:label>{{ $t("line113") }}</template>
+                    </v-radio>
 
-        <!-- reason Field -->
-        <v-row>
-          <v-col>
-            <v-text-field v-model="moodAfter">
-              <template v-slot:label>{{ $t("line117") }}</template>
-            </v-text-field>
-          </v-col>
-        </v-row>
+                    <v-radio value="radio-3">
+                      <template v-slot:label>{{ $t("line114") }}</template>
+                    </v-radio>
+
+                    <v-radio value="radio-4">
+                      <template v-slot:label>{{ $t("line115") }}</template>
+                    </v-radio>
+                  </v-radio-group>
+                </v-container>
+              </v-col>
+            </v-row>
+
+            <!-- Mood Field -->
+            <v-row>
+              <v-col>
+                <v-text-field v-model="mood">
+                  <template v-slot:label>{{ $t("line107") }}</template>
+                </v-text-field>
+              </v-col>
+            </v-row>
+
+            <!-- Fullness Field -->
+            <div>{{ $t("line118") }}</div>
+            <v-row>
+              <v-col>
+                <v-container fluid>
+                  <v-radio-group v-model="fullness" row>
+                    <v-radio value="radio-1">
+                      <template v-slot:label>{{ $t("line108") }}</template>
+                    </v-radio>
+
+                    <v-radio value="radio-2">
+                      <template v-slot:label>{{ $t("line109") }}</template>
+                    </v-radio>
+
+                    <v-radio value="radio-3">
+                      <template v-slot:label>{{ $t("line110") }}</template>
+                    </v-radio>
+
+                    <v-radio value="radio-4">
+                      <template v-slot:label>{{ $t("line111") }}</template>
+                    </v-radio>
+                  </v-radio-group>
+                </v-container>
+              </v-col>
+            </v-row>
+
+            <!-- Protein Field -->
+            <v-row>
+              <v-col>
+                <v-select
+                  v-model="value"
+                  :items="proteinOptions"
+                  attach
+                  multiple
+                  chips
+                >
+                  <template v-slot:label>{{ $t("line2") }}</template>
+                </v-select>
+                <v-row>
+                  <v-col cols="2">
+                    <v-checkbox v-model="checkbox1">
+                      <template v-slot:label>{{ $t("line119") }}</template>
+                    </v-checkbox>
+                  </v-col>
+                  <v-col cols="10">
+                    <v-text-field v-if="checkbox1" v-model="proteinsOther">
+                      <template v-slot:label>{{ $t("line120") }}</template>
+                    </v-text-field>
+                  </v-col>
+                </v-row>
+              </v-col>
+            </v-row>
+
+            <!-- div if other is true then text field -->
+
+            <!-- Vegetable Field -->
+            <v-row>
+              <v-col>
+                <v-text-field v-model="veggies">
+                  <template v-slot:label>{{ $t("line3") }}</template>
+                </v-text-field>
+              </v-col>
+            </v-row>
+
+            <!-- Carbs Field -->
+            <v-row>
+              <v-col>
+                <v-text-field v-model="carbs">
+                  <template v-slot:label>{{ $t("line4") }}</template>
+                </v-text-field>
+              </v-col>
+            </v-row>
+
+            <!-- reason Field -->
+            <v-row>
+              <v-col>
+                <v-text-field v-model="reason">
+                  <template v-slot:label>{{ $t("line116") }}</template>
+                </v-text-field>
+              </v-col>
+            </v-row>
+
+            <!-- reason Field -->
+            <v-row>
+              <v-col>
+                <v-text-field v-model="moodAfter">
+                  <template v-slot:label>{{ $t("line117") }}</template>
+                </v-text-field>
+              </v-col>
+            </v-row>
+          </v-container>
+        </v-form>
       </v-container>
-    </v-form>
-  </v-container>
+    </template>
+    <!-- <template v-else>hi</template> -->
+  </div>
 </template>
 
 <script>

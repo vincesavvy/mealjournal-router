@@ -21,6 +21,11 @@
           <AddMealForm />
         </v-col>
       </v-row>
+      <v-row>
+        <v-col cols="12">
+          <PastMeals />
+        </v-col>
+      </v-row>
     </template>
   </div>
 </template>
