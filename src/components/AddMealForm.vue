@@ -28,18 +28,17 @@
         <!-- Small screens -->
         <div v-else>
           <v-row>
-            <v-col cols="12">
-              <v-date-picker v-model="pickerDate" width="290"></v-date-picker>
+            <v-col cols="6">
+              <v-date-picker v-model="pickerDate" width="200"></v-date-picker>
             </v-col>
-          </v-row>
-          <!-- Time Picker -->
-          <v-row>
-            <v-col cols="12">
+            <!-- Time Picker -->
+            <v-col cols="6">
               <v-time-picker
                 v-model="pickerTime"
                 color="green lighten-1"
                 header-color="primary"
-                width="278"
+                width="220"
+                height="300"
               ></v-time-picker>
             </v-col>
           </v-row>
