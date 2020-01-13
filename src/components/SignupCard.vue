@@ -9,6 +9,8 @@
     <v-card-text class="text--primary">
       <p style="text-align:center">{{ $t("line1") }}</p>
 
+      <hr style="margin:1em" />
+
       <p>{{ $t("line2") }}</p>
     </v-card-text>
     <!-- FORM -->
@@ -72,7 +74,15 @@ export default {
     nameRules: [v => !!v || "Required / Requis"],
     passwordRules: [v => !!v || "Required / Requis"],
     confirmPasswordRules: [v => !!v || "Required / Requis"]
-  })
+  }),
+  methods: {
+    validate() {
+      console.log("ho ohho"); // eslint-disable-line no-console
+      if (this.$refs.form.validate()) {
+        this.snackbar = true;
+      }
+    }
+  }
 };
 </script>
 
@@ -81,7 +91,7 @@ export default {
     "en": {
         "validate button":"Submit",
         "line1":"Instead of using a Google or Facebook account, you are free to register with your email.",
-        "line2":"Just fill up this form.",
+        "line2":"Just fill up this form:",
         "line3": "Email",
         "line4": "Name",
         "line5": "Password",
@@ -90,7 +100,7 @@ export default {
     "fr": {
         "validate button":"Soumettre",
         "line1":"Au lieu de vous connectez à l'aide d'un compte Google ou Facebook, vous pouvez vous enregistrer avec votre courriel.",
-        "line2":"Vous n'avez qu'à remplir ce formulaire.",
+        "line2":"Vous n'avez qu'à remplir ce formulaire:",
         "line3":"Courriel",
         "line4":"Nom",
         "line5":"Mot de passe",
