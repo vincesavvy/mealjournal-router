@@ -1,17 +1,28 @@
 <template>
-  <v-container>
-    <v-row>
-      <v-col cols="6">
-        <!-- ADD MEAL FORM -->
-        <AddMealForm />
-      </v-col>
+  <div>
+    <!-- Large screens -->
+    <template v-if="$vuetify.breakpoint.mdAndUp">
+      <v-container>
+        <v-row>
+          <v-col cols="6">
+            <AddMealForm />
+          </v-col>
+          <v-col cols="6">
+            <PastMeals />
+          </v-col>
+        </v-row>
+      </v-container>
+    </template>
 
-      <v-col cols="6">
-        <!-- PAST-MEALS -->
-        <PastMeals />
-      </v-col>
-    </v-row>
-  </v-container>
+    <!-- Small screens -->
+    <template v-else>
+      <v-row>
+        <v-col cols="12">
+          <AddMealForm />
+        </v-col>
+      </v-row>
+    </template>
+  </div>
 </template>
 
 <script>
