@@ -1,6 +1,9 @@
 <template>
   <div>
     <!-- profile setup button -->
+
+    <LoggedInUserInfos class="d-flex justify-end" />
+
     <v-btn @click="profileDialog = true">Setup your profile</v-btn>
 
     <!-- Large screens -->
@@ -73,6 +76,7 @@
 <script>
 import PastMeals from "@/components/PastMeals.vue";
 import AddMealForm from "@/components/AddMealForm.vue";
+import LoggedInUserInfos from "@/components/LoggedInUserInfos.vue";
 import firebase from "firebase/app";
 
 // This is registering the components.
@@ -85,7 +89,8 @@ export default {
   },
   components: {
     PastMeals,
-    AddMealForm
+    AddMealForm,
+    LoggedInUserInfos
   },
   methods: {
     /* eslint-disable no-alert, no-console */

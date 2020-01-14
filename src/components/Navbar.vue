@@ -23,23 +23,6 @@
 
         <v-spacer></v-spacer>
 
-        <!-- Show user's name and avatar -->
-        <div v-if="user" class="mr-2">
-          {{ user.name }}
-          <v-avatar color="indigo" size="35">
-            <v-img :src="user.photo" />
-          </v-avatar>
-        </div>
-
-        <div v-else class="mr-2">
-          NEED A LINE 118n
-          <v-avatar color="indigo" size="35">
-            <v-img src="@/assets/default-avatar.png" />
-          </v-avatar>
-        </div>
-
-        <!-- <v-img  src="@/assets/default-avatar.png" /> -->
-
         <v-btn
           rounded
           outlined
