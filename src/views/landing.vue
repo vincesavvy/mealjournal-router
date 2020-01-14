@@ -34,7 +34,7 @@
       </v-row>
     </template>
 
-    <!-- actual profile dialog -->
+    <!-- profile modal -->
     <v-dialog v-model="profileDialog" max-width="344" persistent>
       <v-card class="mx-auto">
         <v-container>
@@ -92,6 +92,7 @@ export default {
     AddMealForm,
     LoggedInUserInfos
   },
+
   methods: {
     /* eslint-disable no-alert, no-console */
 

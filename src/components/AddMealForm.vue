@@ -13,10 +13,7 @@
         <div v-if="$vuetify.breakpoint.mdAndUp">
           <v-row>
             <v-col cols="6">
-              <v-date-picker
-                v-model="form.pickerDate"
-                width="290"
-              ></v-date-picker>
+              <v-date-picker v-model="form.pickerDate" width="290"></v-date-picker>
             </v-col>
             <!-- Time Picker -->
             <v-col cols="6">
@@ -34,10 +31,7 @@
         <div v-else>
           <v-row>
             <v-col cols="6">
-              <v-date-picker
-                v-model="form.pickerDate"
-                width="200"
-              ></v-date-picker>
+              <v-date-picker v-model="form.pickerDate" width="200"></v-date-picker>
             </v-col>
             <!-- Time Picker -->
             <v-col cols="6">
@@ -58,11 +52,7 @@
             <!-- Meal Name Field -->
             <v-row>
               <v-col>
-                <v-text-field
-                  v-model="form.mealName"
-                  :rules="mealNameRules"
-                  required
-                >
+                <v-text-field v-model="form.mealName" :rules="mealNameRules" required>
                   <template v-slot:label>{{ $t("line1") }}</template>
                 </v-text-field>
               </v-col>
@@ -150,13 +140,7 @@
             <!-- Protein Field -->
             <v-row>
               <v-col>
-                <v-select
-                  v-model="form.protein"
-                  :items="proteinOptions"
-                  attach
-                  multiple
-                  chips
-                >
+                <v-select v-model="form.protein" :items="proteinOptions" attach multiple chips>
                   <template v-slot:label>{{ $t("line2") }}</template>
                 </v-select>
                 <v-row>
@@ -166,10 +150,7 @@
                     </v-checkbox>
                   </v-col>
                   <v-col cols="10">
-                    <v-text-field
-                      v-if="checkboxProtein"
-                      v-model="form.proteinOther"
-                    >
+                    <v-text-field v-if="checkboxProtein" v-model="form.proteinOther">
                       <template v-slot:label>{{ $t("line120") }}</template>
                     </v-text-field>
                   </v-col>
@@ -180,13 +161,7 @@
             <!-- Vegetable Field -->
             <v-row>
               <v-col>
-                <v-select
-                  v-model="form.veggies"
-                  :items="veggiesOptions"
-                  attach
-                  multiple
-                  chips
-                >
+                <v-select v-model="form.veggies" :items="veggiesOptions" attach multiple chips>
                   <template v-slot:label>{{ $t("line3") }}</template>
                 </v-select>
                 <v-row>
@@ -196,10 +171,7 @@
                     </v-checkbox>
                   </v-col>
                   <v-col cols="10">
-                    <v-text-field
-                      v-if="checkboxVeggies"
-                      v-model="form.veggiesOther"
-                    >
+                    <v-text-field v-if="checkboxVeggies" v-model="form.veggiesOther">
                       <template v-slot:label>{{ $t("line121") }}</template>
                     </v-text-field>
                   </v-col>
@@ -210,13 +182,7 @@
             <!-- Carbs Field -->
             <v-row>
               <v-col>
-                <v-select
-                  v-model="form.carbs"
-                  :items="carbsOptions"
-                  attach
-                  multiple
-                  chips
-                >
+                <v-select v-model="form.carbs" :items="carbsOptions" attach multiple chips>
                   <template v-slot:label>{{ $t("line4") }}</template>
                 </v-select>
                 <v-row>
@@ -226,10 +192,7 @@
                     </v-checkbox>
                   </v-col>
                   <v-col cols="10">
-                    <v-text-field
-                      v-if="checkboxCarbs"
-                      v-model="form.carbsOther"
-                    >
+                    <v-text-field v-if="checkboxCarbs" v-model="form.carbsOther">
                       <template v-slot:label>{{ $t("line122") }}</template>
                     </v-text-field>
                   </v-col>
@@ -254,15 +217,76 @@
                 </v-text-field>
               </v-col>
             </v-row>
-            <v-row align="center" justify="center">
-              <v-btn color="success" @click="confirmationBtn"
-                >Confirm the form</v-btn
-              >
-            </v-row>
           </v-container>
+          <v-row align="center" justify="center">
+            <v-btn color="success" @click="confirmationBtn">Confirm the form</v-btn>
+          </v-row>
         </v-form>
       </v-container>
     </template>
+
+    <!-- review modal -->
+    <v-dialog v-model="reviewModal" max-width="500">
+      <v-card class="mx-auto" max-width="500" tile>
+        IMAGE
+        <!-- Date -->
+        <v-list-item>
+          <v-list-item-content>
+            <v-list-item-title>{{ $t("reviewLine1") }}</v-list-item-title>
+            {{ this.form.pickerDate }}
+          </v-list-item-content>
+        </v-list-item>
+        <!-- time-->
+        <v-list-item>
+          <v-list-item-content>
+            <v-list-item-title>{{ $t("reviewLine2") }}</v-list-item-title>
+            {{ this.form.pickerTime }}
+          </v-list-item-content>
+        </v-list-item>
+        <v-list-item>
+          <v-list-item-content>
+            <!-- name -->
+            <v-list-item-title>{{ $t("reviewLine3") }}</v-list-item-title>
+            <v-list-item-subtitle class="mb-5">{{ this.form.mealName }}</v-list-item-subtitle>
+            <!-- place -->
+            <v-list-item-title>{{ $t("reviewLine4") }}</v-list-item-title>
+            <v-list-item-subtitle class="mb-5">{{ this.form.place }}</v-list-item-subtitle>
+            <!-- company -->
+            <v-list-item-title>{{ $t("reviewLine5") }}</v-list-item-title>
+            <v-list-item-subtitle class="mb-5">{{ this.form.withWhom }}</v-list-item-subtitle>
+            <!-- hunger -->
+            <v-list-item-title>{{ $t("reviewLine6") }}</v-list-item-title>
+            <v-list-item-subtitle class="mb-5">{{ this.form.hunger }}</v-list-item-subtitle>
+            <!-- mood before-->
+            <v-list-item-title>{{ $t("reviewLine7") }}</v-list-item-title>
+            <v-list-item-subtitle class="mb-5">{{ this.form.mood }}</v-list-item-subtitle>
+            <!-- fullness -->
+            <v-list-item-title>{{ $t("reviewLine8") }}</v-list-item-title>
+            <v-list-item-subtitle class="mb-5">{{ this.form.fullness }}</v-list-item-subtitle>
+            <!-- protein -->
+            <v-list-item-title>{{ $t("reviewLine9") }}</v-list-item-title>
+            <v-list-item-subtitle
+              class="mb-5"
+              v-for="(item,i) in this.form.protein"
+              :key="i"
+            >{{ item }}</v-list-item-subtitle>
+            <v-list-item-subtitle class="mb-5">{{ form.proteinOther }}</v-list-item-subtitle>
+            <!-- veggies -->
+            <v-list-item-title>{{ $t("reviewLine10") }}</v-list-item-title>
+            <v-list-item-subtitle class="mb-5">{{ this.form.veggies }}</v-list-item-subtitle>
+            <!-- carbs -->
+            <v-list-item-title>{{ $t("reviewLine11") }}</v-list-item-title>
+            <v-list-item-subtitle class="mb-5">{{ this.form.carbs }}</v-list-item-subtitle>
+            <!-- reason -->
+            <v-list-item-title>{{ $t("reviewLine12") }}</v-list-item-title>
+            <v-list-item-subtitle class="mb-5">{{ this.form.reason }}</v-list-item-subtitle>
+            <!-- mood after  -->
+            <v-list-item-title>{{ $t("reviewLine13") }}</v-list-item-title>
+            <v-list-item-subtitle class="mb-5">{{ this.form.moodAfter }}</v-list-item-subtitle>
+          </v-list-item-content>
+        </v-list-item>
+      </v-card>
+    </v-dialog>
   </div>
 </template>
 
@@ -271,6 +295,8 @@ export default {
   data() {
     return {
       value: null,
+
+      reviewModal: false,
 
       checkboxProtein: false,
       checkboxVeggies: false,
@@ -337,11 +363,13 @@ export default {
   },
   methods: {
     /* eslint-disable no-alert, no-console */
-    showForm() {
-      console.log(this.form);
-    },
     confirmationBtn() {
       console.log("confirm the form");
+      this.reviewModal = true;
+    },
+
+    showForm() {
+      console.log(this.form);
     }
   }
 };
@@ -376,7 +404,20 @@ export default {
     "line119": "Other",
     "line120": "Other source of proteins",
     "line121": "Other source of vegetables",
-    "line122": "Other source of carbohydrates"
+    "line122": "Other source of carbohydrates",
+    "reviewLine1": "Date:",
+    "reviewLine2": "Time:",
+    "reviewLine3": "Name:",
+    "reviewLine4": "Place where it was consumed:",
+    "reviewLine5": "With whom it was consumed:",
+    "reviewLine6": "Level of hunger:",
+    "reviewLine7": "Mood before eating:",
+    "reviewLine8": "Level of satiety:",
+    "reviewLine9": "Sources of proteins:",
+    "reviewLine10": "Sources of vegetables:",
+    "reviewLine11": "Sources of carbohydrates:",
+    "reviewLine12": "Reason why this meal was consumed:",
+    "reviewLine13": "Mood after eating:"
 
   },
   "fr": {
@@ -404,7 +445,30 @@ export default {
     "line119": "Autre",
     "line120": "Autre source de proteines",
     "line121": "Autre source de légumes",
-    "line122": "Autre source de féculents"
+    "line122": "Autre source de féculents",
+    "reviewLine1": "Date:",
+    "reviewLine2": "Heure:",
+    "reviewLine3": "Nom:",
+    "reviewLine4": "Endroit où le repas à été consommé:",
+    "reviewLine5": "Avec qui le repas à été consommé:",
+    "reviewLine6": "Niveau de faim:",
+    "reviewLine7": "Humeur avant de manger:",
+    "reviewLine8": "Niveau de satiété:",
+    "reviewLine9": "Sources de protéines:",
+    "reviewLine10": "Sources de légumes:",
+    "reviewLine11": "Sources de féculents:",
+    "reviewLine12": "Raison pour laquelle le repas a été consommé:",
+    "reviewLine13": "Humeur après avoir mangé:"
+
+
+
+
+
+
+
+
+
+
   }
 }
 </i18n>
