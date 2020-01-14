@@ -22,6 +22,8 @@
         </div>
 
         <v-spacer></v-spacer>
+
+        <!-- Show user's name and avatar -->
         <div v-if="user" class="mr-2">
           {{ user.name }}
           <v-avatar color="indigo" size="35">
