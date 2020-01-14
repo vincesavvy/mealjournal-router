@@ -2,9 +2,9 @@
   <div>
     <template>
       <v-container>
+        {{ $t("line0.1") }}
         <!-- Show form -->
         <v-btn @click="showForm">show form</v-btn>
-        {{ $t("line0.1") }}
         <hr />
         <div style="margin-top: 15px">{{ $t("line0.2") }}</div>
 
@@ -254,6 +254,11 @@
                 </v-text-field>
               </v-col>
             </v-row>
+            <v-row align="center" justify="center">
+              <v-btn color="success" @click="confirmationBtn"
+                >Confirm the form</v-btn
+              >
+            </v-row>
           </v-container>
         </v-form>
       </v-container>
@@ -334,6 +339,9 @@ export default {
     /* eslint-disable no-alert, no-console */
     showForm() {
       console.log(this.form);
+    },
+    confirmationBtn() {
+      console.log("confirm the form");
     }
   }
 };
