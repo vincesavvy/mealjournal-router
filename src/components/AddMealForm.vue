@@ -4,7 +4,6 @@
       <v-container>
         {{ $t("line0.1") }}
         <!-- Show form -->
-        <v-btn @click="showForm">show form</v-btn>
         <hr />
         <div style="margin-top: 15px">{{ $t("line0.2") }}</div>
 
@@ -256,9 +255,9 @@
             </v-row>
           </v-container>
           <v-row align="center" justify="center">
-            <v-btn color="success" @click="confirmationBtn">{{
-              $t("reviewBtn")
-            }}</v-btn>
+            <v-btn color="success" @click="confirmationBtn">
+              {{ $t("reviewBtn") }}
+            </v-btn>
           </v-row>
         </v-form>
       </v-container>
@@ -294,34 +293,34 @@
           <v-list-item-content>
             <!-- name -->
             <v-list-item-title>{{ $t("reviewLine3") }}</v-list-item-title>
-            <v-list-item-subtitle class="mb-5">
-              {{ this.form.mealName }}
-            </v-list-item-subtitle>
+            <v-list-item-subtitle class="mb-5">{{
+              this.form.mealName
+            }}</v-list-item-subtitle>
             <!-- place -->
             <v-list-item-title>{{ $t("reviewLine4") }}</v-list-item-title>
-            <v-list-item-subtitle class="mb-5">
-              {{ this.form.place }}
-            </v-list-item-subtitle>
+            <v-list-item-subtitle class="mb-5">{{
+              this.form.place
+            }}</v-list-item-subtitle>
             <!-- company -->
             <v-list-item-title>{{ $t("reviewLine5") }}</v-list-item-title>
-            <v-list-item-subtitle class="mb-5">
-              {{ this.form.withWhom }}
-            </v-list-item-subtitle>
+            <v-list-item-subtitle class="mb-5">{{
+              this.form.withWhom
+            }}</v-list-item-subtitle>
             <!-- hunger -->
             <v-list-item-title>{{ $t("reviewLine6") }}</v-list-item-title>
-            <v-list-item-subtitle class="mb-5">
-              {{ this.form.hunger }}
-            </v-list-item-subtitle>
+            <v-list-item-subtitle class="mb-5">{{
+              this.form.hunger
+            }}</v-list-item-subtitle>
             <!-- mood before-->
             <v-list-item-title>{{ $t("reviewLine7") }}</v-list-item-title>
-            <v-list-item-subtitle class="mb-5">
-              {{ this.form.mood }}
-            </v-list-item-subtitle>
+            <v-list-item-subtitle class="mb-5">{{
+              this.form.mood
+            }}</v-list-item-subtitle>
             <!-- fullness -->
             <v-list-item-title>{{ $t("reviewLine8") }}</v-list-item-title>
-            <v-list-item-subtitle class="mb-5">
-              {{ this.form.fullness }}
-            </v-list-item-subtitle>
+            <v-list-item-subtitle class="mb-5">{{
+              this.form.fullness
+            }}</v-list-item-subtitle>
             <!-- protein -->
             <v-list-item-title>{{ $t("reviewLine9") }}</v-list-item-title>
             <v-list-item-subtitle
@@ -330,9 +329,9 @@
               :key="item"
               >{{ item }}</v-list-item-subtitle
             >
-            <v-list-item-subtitle class="mb-5">
-              {{ form.proteinOther }}
-            </v-list-item-subtitle>
+            <v-list-item-subtitle class="mb-5">{{
+              form.proteinOther
+            }}</v-list-item-subtitle>
             <!-- veggies -->
             <v-list-item-title>{{ $t("reviewLine10") }}</v-list-item-title>
             <v-list-item-subtitle
@@ -341,9 +340,9 @@
               :key="item"
               >{{ item }}</v-list-item-subtitle
             >
-            <v-list-item-subtitle class="mb-5">
-              {{ form.veggiesOther }}
-            </v-list-item-subtitle>
+            <v-list-item-subtitle class="mb-5">{{
+              form.veggiesOther
+            }}</v-list-item-subtitle>
             <!-- carbs -->
             <v-list-item-title>{{ $t("reviewLine11") }}</v-list-item-title>
             <v-list-item-subtitle
@@ -352,19 +351,19 @@
               :key="i * 10"
               >{{ item }}</v-list-item-subtitle
             >
-            <v-list-item-subtitle class="mb-5">
-              {{ form.carbsOther }}
-            </v-list-item-subtitle>
+            <v-list-item-subtitle class="mb-5">{{
+              form.carbsOther
+            }}</v-list-item-subtitle>
             <!-- reason -->
             <v-list-item-title>{{ $t("reviewLine12") }}</v-list-item-title>
-            <v-list-item-subtitle class="mb-5">
-              {{ this.form.reason }}
-            </v-list-item-subtitle>
+            <v-list-item-subtitle class="mb-5">{{
+              this.form.reason
+            }}</v-list-item-subtitle>
             <!-- mood after  -->
             <v-list-item-title>{{ $t("reviewLine13") }}</v-list-item-title>
-            <v-list-item-subtitle class="mb-5">
-              {{ this.form.moodAfter }}
-            </v-list-item-subtitle>
+            <v-list-item-subtitle class="mb-5">{{
+              this.form.moodAfter
+            }}</v-list-item-subtitle>
           </v-list-item-content>
         </v-list-item>
         <v-list-item>
@@ -460,10 +459,6 @@ export default {
     confirmationBtn() {
       console.log("confirm the form");
       this.reviewModal = true;
-    },
-
-    showForm() {
-      console.log(this.form);
     },
 
     closeReviewModal() {

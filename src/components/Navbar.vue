@@ -107,14 +107,6 @@ export default {
     french() {
       this.$i18n.locale = "fr";
     }
-  },
-  created() {
-    this.$store.dispatch("getUserInfo");
-  },
-  computed: {
-    user() {
-      return this.$store.getters.profileInfo;
-    }
   }
 };
 </script>

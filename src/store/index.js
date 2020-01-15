@@ -11,6 +11,9 @@ export default new Vuex.Store({
   mutations: {
     setUserInfo(state, payload) {
       state.user = payload;
+    },
+    userInfoNull(state) {
+      state.user = null;
     }
   },
   actions: {
@@ -26,6 +29,23 @@ export default new Vuex.Store({
         };
         commit("setUserInfo", info);
       });
+    },
+    signOut({ commit }) {
+      firebase
+        .auth()
+        .signOut()
+        .then(
+          // console.log("Sign-out successful.");
+          //.
+          /* 
+          We need to use a browser property "window" for the redirect, because "$router" is not available in the store.
+          */
+          (window.location.href = "/")
+        )
+        .catch(function(error) {
+          console.log(error);
+        });
+      commit("userInfoNull");
     }
   },
   getters: {
