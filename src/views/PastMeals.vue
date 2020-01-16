@@ -1,6 +1,6 @@
 <template>
   <v-container>
-    <v-btn @click="realtimeRead">Read the data</v-btn>
+    <v-btn @click="realtimeRead">{{ $t("line1") }}</v-btn>
     <!-- {{item.form}} -->
     <v-card v-for="item in formData" :key="item.id" class="ma-2">
       <div>
@@ -9,7 +9,7 @@
           <v-col cols="6">
             <v-list-item>
               <v-list-item-content>
-                <v-list-item-title>DATE</v-list-item-title>
+                <v-list-item-title>{{ $t("line2") }}</v-list-item-title>
                 <v-list-item-subtitle>
                   {{ item.form.pickerDate }}
                 </v-list-item-subtitle>
@@ -19,7 +19,7 @@
           <v-col cols="6">
             <v-list-item>
               <v-list-item-content>
-                <v-list-item-title>Time</v-list-item-title>
+                <v-list-item-title>{{ $t("line3") }}</v-list-item-title>
                 <v-list-item-subtitle>
                   {{ item.form.pickerTime }}
                 </v-list-item-subtitle>
@@ -29,14 +29,14 @@
         </v-row>
         <!-- Name -->
         <v-row class="ma-2">
-          <v-list-item-title>Name</v-list-item-title>
+          <v-list-item-title>{{ $t("line4") }}</v-list-item-title>
           <v-list-item-subtitle class="ml-5">
             {{ item.form.mealName }}
           </v-list-item-subtitle>
         </v-row>
         <!-- place -->
 
-        <v-list-item-title class="ma-2">Place</v-list-item-title>
+        <v-list-item-title class="ma-2">{{ $t("line5") }}</v-list-item-title>
         <v-row v-for="arrItem in item.form.place" :key="arrItem" class="ma-2">
           <li class="ml-5">{{ arrItem }}</li>
         </v-row>
@@ -48,7 +48,7 @@
 
         <!-- With whom -->
 
-        <v-list-item-title class="ma-2">With whom</v-list-item-title>
+        <v-list-item-title class="ma-2">{{ $t("line6") }}</v-list-item-title>
         <v-row
           v-for="arrItem in item.form.withWhom"
           :key="arrItem"
@@ -64,7 +64,7 @@
 
         <!-- Level of hunger -->
         <v-row class="ma-2">
-          <v-list-item-title>Level of hunger</v-list-item-title>
+          <v-list-item-title>{{ $t("line7") }}</v-list-item-title>
           <v-list-item-subtitle class="ml-5">
             {{ item.form.hunger }}
           </v-list-item-subtitle>
@@ -72,7 +72,7 @@
 
         <!-- Mood before -->
 
-        <v-list-item-title class="ma-2">Mood before</v-list-item-title>
+        <v-list-item-title class="ma-2">{{ $t("line8") }}</v-list-item-title>
         <v-row v-for="arrItem in item.form.mood" :key="arrItem" class="ma-2">
           <li class="ml-5">{{ arrItem }}</li>
         </v-row>
@@ -84,14 +84,14 @@
 
         <!-- Level of fullness -->
         <v-row class="ma-2">
-          <v-list-item-title>Level of fullness</v-list-item-title>
+          <v-list-item-title>{{ $t("line9") }}</v-list-item-title>
           <v-list-item-subtitle class="ml-5">
             {{ item.form.fullness }}
           </v-list-item-subtitle>
         </v-row>
 
         <!-- Proteins -->
-        <v-list-item-title class="ma-2">Proteins</v-list-item-title>
+        <v-list-item-title class="ma-2">{{ $t("line10") }}</v-list-item-title>
         <v-row v-for="arrItem in item.form.protein" :key="arrItem" class="ma-2">
           <li class="ml-5">{{ arrItem }}</li>
         </v-row>
@@ -102,7 +102,7 @@
         </v-row>
 
         <!-- Veggies -->
-        <v-list-item-title class="ma-2">Vegetables</v-list-item-title>
+        <v-list-item-title class="ma-2">{{ $t("line11") }}</v-list-item-title>
         <v-row v-for="arrItem in item.form.veggies" :key="arrItem" class="ma-2">
           <li class="ml-5">{{ arrItem }}</li>
         </v-row>
@@ -113,7 +113,7 @@
         </v-row>
 
         <!-- Carbs -->
-        <v-list-item-title class="ma-2">Carbohydrates</v-list-item-title>
+        <v-list-item-title class="ma-2">{{ $t("line12") }}</v-list-item-title>
         <v-row v-for="arrItem in item.form.carbs" :key="arrItem" class="ma-2">
           <li class="ml-5">{{ arrItem }}</li>
         </v-row>
@@ -125,7 +125,7 @@
 
         <!-- Reason -->
 
-        <v-list-item-title class="ma-2">Reason</v-list-item-title>
+        <v-list-item-title class="ma-2">{{ $t("line13") }}</v-list-item-title>
         <v-row v-for="arrItem in item.form.reason" :key="arrItem" class="ma-2">
           <li class="ml-5">{{ arrItem }}</li>
         </v-row>
@@ -137,7 +137,7 @@
 
         <!-- Mood After -->
 
-        <v-list-item-title class="ma-2">Mood after</v-list-item-title>
+        <v-list-item-title class="ma-2">{{ $t("line14") }}</v-list-item-title>
         <v-row
           v-for="arrItem in item.form.moodAfter"
           :key="arrItem"
@@ -202,16 +202,36 @@ export default {
 <i18n>
 {
   "en": {
-    "line1": "Add a meal",
-    "line2": "Time of meal:",
-    "line3": "Past meals",
-    "line4": "List of past meals:"
+    "line1": "Get the past meals",
+    "line2": "Date",
+    "line3": "Time",
+    "line4": "Name",
+    "line5": "Place",
+    "line6": "With whom",
+    "line7": "Level of hunger",
+    "line8": "Mood before",
+    "line9": "Level of fullness",
+    "line10": "Proteins",
+    "line11": "Vegetables",
+    "line12": "Carbohydrates",
+    "line13": "Reason",
+    "line14": "Mood after"
   },
   "fr": {
-    "line1": "Ajouter un repas",
-    "line2": "Date et heure du repas:",
-    "line3": "Anciens repas",
-    "line4": "Liste des ancients repas:"
+    "line1": "Accéder aux repas passés",
+    "line2": "Date",
+    "line3": "Heure",
+    "line4": "Nom",
+    "line5": "Endroit",
+    "line6": "Avec qui?",
+    "line7": "Niveau de faim",
+    "line8": "Humeur avant de manger",
+    "line9": "Niveau de satiété",
+    "line10": "Protéines",
+    "line11": "Légumes",
+    "line12": "Féculents",
+    "line13": "Raison",
+    "line14": "Humeur après avoir mangé"
   }
 }
 </i18n>

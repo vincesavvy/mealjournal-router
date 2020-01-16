@@ -9,9 +9,9 @@
           <v-col cols="2"></v-col>
           <v-col cols="8">
             <div align="center" justify="center">
-              <v-btn @click="getEmailAsync" color="warning"
-                >Setup your profile</v-btn
-              >
+              <v-btn @click="getEmailAsync" color="warning">{{
+                $t("line5")
+              }}</v-btn>
             </div>
             <AddMealForm />
           </v-col>
@@ -32,33 +32,31 @@
     <v-dialog v-model="profileDialog" max-width="344" persistent>
       <v-card class="mx-auto">
         <v-container>
-          <v-card-title>Please good sir or ma'am!</v-card-title>
-          <v-card-title>Complete your profile!</v-card-title>
+          <v-card-title>{{ $t("line6") }} </v-card-title>
           <p>
-            In order for the app to run properly without any complication,
-            please make sure to complete this tiny weeny little form.
+            {{ $t("line7") }}
           </p>
-          <p>How would you like to be called?</p>
+          <p>{{ $t("line8") }}</p>
           <v-container>
             <v-text-field
               label="Display name"
               v-model="userDisplayName"
             ></v-text-field>
           </v-container>
-          <v-container>We already know your email:</v-container>
+          <v-container>{{ $t("line9") }}</v-container>
           <v-container>
             <span>{{ email }}</span>
           </v-container>
 
           <v-card-actions>
-            <v-btn text color="deep-purple accent-4" @click="saveInfoDB"
-              >Save</v-btn
-            >
+            <v-btn text color="deep-purple accent-4" @click="saveInfoDB">{{
+              $t("line10")
+            }}</v-btn>
             <v-btn
               text
               color="deep-purple accent-4"
               @click="profileDialog = false"
-              >CLOSE</v-btn
+              >{{ $t("line11") }}</v-btn
             >
           </v-card-actions>
         </v-container>
@@ -190,13 +188,29 @@ export default {
     "line1": "Add a meal",
     "line2": "Time of meal:",
     "line3": "Past meals",
-    "line4": "List of past meals:"
+    "line4": "List of past meals:",
+    "line5": "Setup your profile",
+    "line6": "Setup your profile!",
+    "line7": "In order for the app to run properly without any complication, please make sure to complete this tiny weeny little form.",
+    "line8": "Enter a username:",
+    "line9": "We already have your email:",
+    "line10": "save",
+    "line11": "close"
   },
+
   "fr": {
     "line1": "Ajouter un repas",
     "line2": "Date et heure du repas:",
     "line3": "Anciens repas",
-    "line4": "Liste des ancients repas:"
+    "line4": "Liste des ancients repas:",
+    "line5": "Configurer votre profil",
+    "line6": "Configurez votre profil!",  
+    "line7": "Pour que l'application fonctionne correctement, sans aucune complication, veuillez vous assurer de remplir ce petit formulaire minuscule.",
+    "line8": "Entrez un nom d'utilisateur",
+    "line9": "Nous avons déja votre courriel:",
+    "line10": "Sauvegarder",
+    "line11": "Fermer"
   }
+
 }
 </i18n>
