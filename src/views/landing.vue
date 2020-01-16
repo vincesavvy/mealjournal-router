@@ -13,7 +13,7 @@
             <!--  -->
             <!-- PastMeals -->
             <!--  -->
-            <v-btn @click="readInfoDB">Read the data</v-btn>
+            <v-btn @click="realtimeRead">Read the data</v-btn>
             <v-btn @click="getEmailAsync">Setup your profile</v-btn>
 
             <v-container>
@@ -261,40 +261,44 @@ export default {
         .catch(error => console.log(error));
     },
 
-    readInfoDB() {
-      const db = firebase.firestore();
-      const ref = db
-        .collection("JournalEntries")
-        .where("uid", "==", this.$store.getters.profileInfo.userID);
-      let info = [];
-      ref
-        .get()
-        .then(
-          // get the data object and iterate to extract information
-          queryArray => {
-            queryArray.forEach(doc => {
-              console.log(doc.data().form);
-              info.push(doc.data());
-            });
-          }
-        )
-        .catch(error => console.log(error));
-      this.formData = info;
-      console.log(this.formData);
-    }
-
-    // realtimeRead() {
+    // readInfoDB() {
     //   const db = firebase.firestore();
     //   const ref = db
     //     .collection("JournalEntries")
     //     .where("uid", "==", this.$store.getters.profileInfo.userID);
+    //   let info = [];
+    //   ref
+    //     .get()
+    //     .then(
+    //       // get the data object and iterate to extract information
+    //       queryArray => {
+    //         queryArray.forEach(doc => {
+    //           console.log(doc.data().form);
+    //           info.push(doc.data());
+    //         });
+    //       }
+    //     )
+    //     .catch(error => console.log(error));
+    //   this.formData = info;
+    //   console.log(this.formData);
+    // },
 
-    //   ref.onSnapshot(snapArray => {
-    //     snapArray.forEach(doc => {
-    //       console.log(doc.data());
-    //     });
-    //   });
-    // }
+    realtimeRead() {
+      let info = [];
+      const db = firebase.firestore();
+      const ref = db
+        .collection("JournalEntries")
+        .where("uid", "==", this.$store.getters.profileInfo.userID);
+
+      ref.onSnapshot(snapArray => {
+        snapArray.forEach(doc => {
+          console.log(doc.data());
+          info.push(doc.data());
+        });
+      });
+      this.formData = info;
+      console.log("Realtime, baby!");
+    }
 
     // saveInfoDBv2() {
     //   const db = firebase.firestore();

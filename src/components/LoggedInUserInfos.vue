@@ -10,12 +10,6 @@
       </v-row>
     </div>
 
-    <div v-else class="mr-2">
-      NEED A LINE 118n
-      <v-avatar color="indigo" size="35">
-        <v-img src="@/assets/default-avatar.png" />
-      </v-avatar>
-    </div>
     <v-btn @click="logOut" class="ml-3 mt-4" text icon color="red" large>
       <v-icon>mdi-logout</v-icon>
     </v-btn>
