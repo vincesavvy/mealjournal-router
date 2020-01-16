@@ -6,146 +6,14 @@
     <template v-if="$vuetify.breakpoint.mdAndUp">
       <v-container>
         <v-row>
-          <v-col cols="7">
+          <v-col cols="2"></v-col>
+          <v-col cols="8">
+            <div align="center" justify="center">
+              <v-btn @click="getEmailAsync" color="warning"
+                >Setup your profile</v-btn
+              >
+            </div>
             <AddMealForm />
-          </v-col>
-          <v-col cols="5">
-            <!--  -->
-            <!-- PastMeals -->
-            <!--  -->
-            <v-btn @click="realtimeRead">Read the data</v-btn>
-            <v-btn @click="getEmailAsync">Setup your profile</v-btn>
-
-            <v-container>
-              <!-- {{item.form}} -->
-              <v-card v-for="item in formData" :key="item.id" class="ma-2">
-                <div>
-                  <!-- Time -->
-                  <v-row>
-                    <v-col cols="6">
-                      <v-list-item>
-                        <v-list-item-content>
-                          <v-list-item-title>DATE</v-list-item-title>
-                          <v-list-item-subtitle>
-                            {{ item.form.pickerDate }}
-                          </v-list-item-subtitle>
-                        </v-list-item-content>
-                      </v-list-item>
-                    </v-col>
-                    <v-col cols="6">
-                      <v-list-item>
-                        <v-list-item-content>
-                          <v-list-item-title>Time</v-list-item-title>
-                          <v-list-item-subtitle>
-                            {{ item.form.pickerTime }}
-                          </v-list-item-subtitle>
-                        </v-list-item-content>
-                      </v-list-item>
-                    </v-col>
-                  </v-row>
-                  <!-- Name -->
-                  <v-row class="ma-2">
-                    <v-list-item-title>Name</v-list-item-title>
-                    <v-list-item-subtitle class="ml-5">
-                      {{ item.form.mealName }}
-                    </v-list-item-subtitle>
-                  </v-row>
-                  <!-- place -->
-                  <v-row class="ma-2">
-                    <v-list-item-title>Place</v-list-item-title>
-                    <v-list-item-subtitle class="ml-5">
-                      {{ item.form.place }}
-                    </v-list-item-subtitle>
-                  </v-row>
-                  <!-- With whom -->
-                  <v-row class="ma-2">
-                    <v-list-item-title>With whom</v-list-item-title>
-                    <v-list-item-subtitle class="ml-5">
-                      {{ item.form.withWhom }}
-                    </v-list-item-subtitle>
-                  </v-row>
-                  <!-- Level of hunger -->
-                  <v-row class="ma-2">
-                    <v-list-item-title>Level of hunger</v-list-item-title>
-                    <v-list-item-subtitle class="ml-5">
-                      {{ item.form.hunger }}
-                    </v-list-item-subtitle>
-                  </v-row>
-                  <!-- Mood before -->
-                  <v-row class="ma-2">
-                    <v-list-item-title>Mood before eating</v-list-item-title>
-                    <v-list-item-subtitle class="ml-5">
-                      {{ item.form.mood }}
-                    </v-list-item-subtitle>
-                  </v-row>
-                  <!-- Level of fullness -->
-                  <v-row class="ma-2">
-                    <v-list-item-title>Level of fullness</v-list-item-title>
-                    <v-list-item-subtitle class="ml-5">
-                      {{ item.form.fullness }}
-                    </v-list-item-subtitle>
-                  </v-row>
-                  <!-- Proteins -->
-                  <v-list-item-title class="ma-2">Proteins</v-list-item-title>
-                  <v-row
-                    v-for="arrItem in item.form.protein"
-                    :key="arrItem"
-                    class="ma-2"
-                  >
-                    <li class="ml-5">{{ arrItem }}</li>
-                  </v-row>
-                  <v-row class="ma-2">
-                    <li v-if="item.form.proteinOther != null" class="ml-5">
-                      {{ item.form.proteinOther }}
-                    </li>
-                  </v-row>
-                  <!-- Veggies -->
-                  <v-list-item-title class="ma-2">Vegetables</v-list-item-title>
-                  <v-row
-                    v-for="arrItem in item.form.veggies"
-                    :key="arrItem"
-                    class="ma-2"
-                  >
-                    <li class="ml-5">{{ arrItem }}</li>
-                  </v-row>
-                  <v-row class="ma-2">
-                    <li v-if="item.form.veggiesOther != null" class="ml-5">
-                      {{ item.form.veggiesOther }}
-                    </li>
-                  </v-row>
-                  <!-- Carbs -->
-                  <v-list-item-title class="ma-2"
-                    >Carbohydrates</v-list-item-title
-                  >
-                  <v-row
-                    v-for="arrItem in item.form.carbs"
-                    :key="arrItem"
-                    class="ma-2"
-                  >
-                    <li class="ml-5">{{ arrItem }}</li>
-                  </v-row>
-                  <v-row>
-                    <li v-if="item.form.carbsOther != null" class="ml-5">
-                      {{ item.form.carbsOther }}
-                    </li>
-                  </v-row>
-                  <!-- Reason -->
-                  <v-row class="ma-2">
-                    <v-list-item-title>Reason</v-list-item-title>
-                    <v-list-item-subtitle class="ml-5">
-                      {{ item.form.reason }}
-                    </v-list-item-subtitle>
-                  </v-row>
-                  <!-- Mood After -->
-                  <v-row class="ma-2 mb-5">
-                    <v-list-item-title>Mood after eating</v-list-item-title>
-                    <v-list-item-subtitle class="ml-5 mb-5">
-                      {{ item.form.moodAfter }}
-                    </v-list-item-subtitle>
-                  </v-row>
-                </div>
-              </v-card>
-            </v-container>
           </v-col>
         </v-row>
       </v-container>
@@ -156,11 +24,6 @@
       <v-row>
         <v-col cols="12">
           <AddMealForm />
-        </v-col>
-      </v-row>
-      <v-row>
-        <v-col cols="12">
-          <PastMeals />
         </v-col>
       </v-row>
     </template>
@@ -205,7 +68,6 @@
 </template>
 
 <script>
-import PastMeals from "@/components/PastMeals.vue";
 import AddMealForm from "@/components/AddMealForm.vue";
 import LoggedInUserInfos from "@/components/LoggedInUserInfos.vue";
 import firebase from "firebase/app";
@@ -221,7 +83,6 @@ export default {
     };
   },
   components: {
-    PastMeals,
     AddMealForm,
     LoggedInUserInfos
   },

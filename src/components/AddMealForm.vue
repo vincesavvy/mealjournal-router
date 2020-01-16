@@ -70,18 +70,60 @@
             <!-- Place Field -->
             <v-row>
               <v-col>
-                <v-text-field v-model="form.place">
+                <v-select
+                  v-model="form.place"
+                  :items="placeOptions"
+                  attach
+                  multiple
+                  chips
+                >
                   <template v-slot:label>{{ $t("line104") }}</template>
-                </v-text-field>
+                </v-select>
+                <v-row>
+                  <v-col cols="2">
+                    <v-checkbox v-model="checkboxPlace">
+                      <template v-slot:label>{{ $t("line119") }}</template>
+                    </v-checkbox>
+                  </v-col>
+                  <v-col cols="10">
+                    <v-text-field
+                      v-if="checkboxPlace"
+                      v-model="form.placeOther"
+                    >
+                      <template v-slot:label>{{ $t("line123") }}</template>
+                    </v-text-field>
+                  </v-col>
+                </v-row>
               </v-col>
             </v-row>
 
             <!-- With Whom Field -->
             <v-row>
               <v-col>
-                <v-text-field v-model="form.withWhom">
+                <v-select
+                  v-model="form.withWhom"
+                  :items="companyOptions"
+                  attach
+                  multiple
+                  chips
+                >
                   <template v-slot:label>{{ $t("line105") }}</template>
-                </v-text-field>
+                </v-select>
+                <v-row>
+                  <v-col cols="2">
+                    <v-checkbox v-model="checkboxCompany">
+                      <template v-slot:label>{{ $t("line119") }}</template>
+                    </v-checkbox>
+                  </v-col>
+                  <v-col cols="10">
+                    <v-text-field
+                      v-if="checkboxCompany"
+                      v-model="form.withWhomOther"
+                    >
+                      <template v-slot:label>{{ $t("line124") }}</template>
+                    </v-text-field>
+                  </v-col>
+                </v-row>
               </v-col>
             </v-row>
 
@@ -111,12 +153,33 @@
               </v-col>
             </v-row>
 
-            <!-- Mood Field -->
+            <!-- Mood before Field -->
             <v-row>
               <v-col>
-                <v-text-field v-model="form.mood">
+                <v-select
+                  v-model="form.mood"
+                  :items="moodBeforeOptions"
+                  attach
+                  multiple
+                  chips
+                >
                   <template v-slot:label>{{ $t("line107") }}</template>
-                </v-text-field>
+                </v-select>
+                <v-row>
+                  <v-col cols="2">
+                    <v-checkbox v-model="checkboxMoodBefore">
+                      <template v-slot:label>{{ $t("line119") }}</template>
+                    </v-checkbox>
+                  </v-col>
+                  <v-col cols="10">
+                    <v-text-field
+                      v-if="checkboxMoodBefore"
+                      v-model="form.moodBeforeOther"
+                    >
+                      <template v-slot:label>{{ $t("line125") }}</template>
+                    </v-text-field>
+                  </v-col>
+                </v-row>
               </v-col>
             </v-row>
 
@@ -239,31 +302,75 @@
             <!-- reason Field -->
             <v-row>
               <v-col>
-                <v-text-field v-model="form.reason">
+                <v-select
+                  v-model="form.reason"
+                  :items="reasonOptions"
+                  attach
+                  multiple
+                  chips
+                >
                   <template v-slot:label>{{ $t("line116") }}</template>
-                </v-text-field>
+                </v-select>
+                <v-row>
+                  <v-col cols="2">
+                    <v-checkbox v-model="checkboxReason">
+                      <template v-slot:label>{{ $t("line119") }}</template>
+                    </v-checkbox>
+                  </v-col>
+                  <v-col cols="10">
+                    <v-text-field
+                      v-if="checkboxReason"
+                      v-model="form.reasonOther"
+                    >
+                      <template v-slot:label>{{ $t("line126") }}</template>
+                    </v-text-field>
+                  </v-col>
+                </v-row>
               </v-col>
             </v-row>
 
             <!-- Mood after Field -->
             <v-row>
               <v-col>
-                <v-text-field v-model="form.moodAfter">
+                <v-select
+                  v-model="form.moodAfter"
+                  :items="moodAfterOptions"
+                  attach
+                  multiple
+                  chips
+                >
                   <template v-slot:label>{{ $t("line117") }}</template>
-                </v-text-field>
+                </v-select>
+                <v-row>
+                  <v-col cols="2">
+                    <v-checkbox v-model="checkboxMoodAfter">
+                      <template v-slot:label>{{ $t("line119") }}</template>
+                    </v-checkbox>
+                  </v-col>
+                  <v-col cols="10">
+                    <v-text-field
+                      v-if="checkboxMoodAfter"
+                      v-model="form.moodAfterOther"
+                    >
+                      <template v-slot:label>{{ $t("line125") }}</template>
+                    </v-text-field>
+                  </v-col>
+                </v-row>
               </v-col>
             </v-row>
           </v-container>
           <v-row align="center" justify="center">
-            <v-btn color="success" @click="confirmationBtn">
-              {{ $t("reviewBtn") }}
-            </v-btn>
+            <v-btn color="success" @click="confirmationBtn">{{
+              $t("reviewBtn")
+            }}</v-btn>
           </v-row>
         </v-form>
       </v-container>
     </template>
 
+    <!--  -->
     <!-- review modal -->
+    <!--  -->
     <v-dialog v-model="reviewModal" max-width="500">
       <v-card class="mx-auto" max-width="500" tile>
         <v-img class="align-end" height="300px" src="@/assets/reviewForm.png">
@@ -293,34 +400,52 @@
           <v-list-item-content>
             <!-- name -->
             <v-list-item-title>{{ $t("reviewLine3") }}</v-list-item-title>
-            <v-list-item-subtitle class="mb-5">{{
-              this.form.mealName
-            }}</v-list-item-subtitle>
+            <v-list-item-subtitle class="mb-5">
+              {{ this.form.mealName }}
+            </v-list-item-subtitle>
             <!-- place -->
             <v-list-item-title>{{ $t("reviewLine4") }}</v-list-item-title>
-            <v-list-item-subtitle class="mb-5">{{
-              this.form.place
-            }}</v-list-item-subtitle>
+            <v-list-item-subtitle
+              class="mb-5"
+              v-for="item in this.form.place"
+              :key="item"
+              >{{ item }}</v-list-item-subtitle
+            >
+            <v-list-item-subtitle class="mb-5">
+              {{ form.placeOther }}
+            </v-list-item-subtitle>
             <!-- company -->
             <v-list-item-title>{{ $t("reviewLine5") }}</v-list-item-title>
-            <v-list-item-subtitle class="mb-5">{{
-              this.form.withWhom
-            }}</v-list-item-subtitle>
+            <v-list-item-subtitle
+              class="mb-5"
+              v-for="item in this.form.withWhom"
+              :key="item"
+              >{{ item }}</v-list-item-subtitle
+            >
+            <v-list-item-subtitle class="mb-5">
+              {{ form.withWhomOther }}
+            </v-list-item-subtitle>
             <!-- hunger -->
             <v-list-item-title>{{ $t("reviewLine6") }}</v-list-item-title>
-            <v-list-item-subtitle class="mb-5">{{
-              this.form.hunger
-            }}</v-list-item-subtitle>
+            <v-list-item-subtitle class="mb-5">
+              {{ this.form.hunger }}
+            </v-list-item-subtitle>
             <!-- mood before-->
             <v-list-item-title>{{ $t("reviewLine7") }}</v-list-item-title>
-            <v-list-item-subtitle class="mb-5">{{
-              this.form.mood
-            }}</v-list-item-subtitle>
+            <v-list-item-subtitle
+              class="mb-5"
+              v-for="item in this.form.mood"
+              :key="item"
+              >{{ item }}</v-list-item-subtitle
+            >
+            <v-list-item-subtitle class="mb-5">
+              {{ form.moodBeforeOther }}
+            </v-list-item-subtitle>
             <!-- fullness -->
             <v-list-item-title>{{ $t("reviewLine8") }}</v-list-item-title>
-            <v-list-item-subtitle class="mb-5">{{
-              this.form.fullness
-            }}</v-list-item-subtitle>
+            <v-list-item-subtitle class="mb-5">
+              {{ this.form.fullness }}
+            </v-list-item-subtitle>
             <!-- protein -->
             <v-list-item-title>{{ $t("reviewLine9") }}</v-list-item-title>
             <v-list-item-subtitle
@@ -329,9 +454,9 @@
               :key="item"
               >{{ item }}</v-list-item-subtitle
             >
-            <v-list-item-subtitle class="mb-5">{{
-              form.proteinOther
-            }}</v-list-item-subtitle>
+            <v-list-item-subtitle class="mb-5">
+              {{ form.proteinOther }}
+            </v-list-item-subtitle>
             <!-- veggies -->
             <v-list-item-title>{{ $t("reviewLine10") }}</v-list-item-title>
             <v-list-item-subtitle
@@ -340,9 +465,9 @@
               :key="item"
               >{{ item }}</v-list-item-subtitle
             >
-            <v-list-item-subtitle class="mb-5">{{
-              form.veggiesOther
-            }}</v-list-item-subtitle>
+            <v-list-item-subtitle class="mb-5">
+              {{ form.veggiesOther }}
+            </v-list-item-subtitle>
             <!-- carbs -->
             <v-list-item-title>{{ $t("reviewLine11") }}</v-list-item-title>
             <v-list-item-subtitle
@@ -351,19 +476,32 @@
               :key="i * 10"
               >{{ item }}</v-list-item-subtitle
             >
-            <v-list-item-subtitle class="mb-5">{{
-              form.carbsOther
-            }}</v-list-item-subtitle>
+            <v-list-item-subtitle class="mb-5">
+              {{ form.carbsOther }}
+            </v-list-item-subtitle>
             <!-- reason -->
             <v-list-item-title>{{ $t("reviewLine12") }}</v-list-item-title>
-            <v-list-item-subtitle class="mb-5">{{
-              this.form.reason
-            }}</v-list-item-subtitle>
+            <v-list-item-subtitle
+              class="mb-5"
+              v-for="item in this.form.reason"
+              :key="item"
+              >{{ item }}</v-list-item-subtitle
+            >
+            <v-list-item-subtitle class="mb-5">
+              {{ form.reasonOther }}
+            </v-list-item-subtitle>
             <!-- mood after  -->
+
             <v-list-item-title>{{ $t("reviewLine13") }}</v-list-item-title>
-            <v-list-item-subtitle class="mb-5">{{
-              this.form.moodAfter
-            }}</v-list-item-subtitle>
+            <v-list-item-subtitle
+              class="mb-5"
+              v-for="item in this.form.moodAfter"
+              :key="item"
+              >{{ item }}</v-list-item-subtitle
+            >
+            <v-list-item-subtitle class="mb-5">
+              {{ form.moodAfterOther }}
+            </v-list-item-subtitle>
           </v-list-item-content>
         </v-list-item>
         <v-list-item>
@@ -390,11 +528,40 @@ export default {
 
       reviewModal: false,
 
+      checkboxPlace: false,
       checkboxProtein: false,
       checkboxVeggies: false,
       checkboxCarbs: false,
+      checkboxCompany: false,
+      checkboxMoodBefore: false,
+      checkboxReason: false,
+      checkboxMoodAfter: false,
 
-      proteinsOther: "",
+      placeOptions: [
+        "kitchen / cuisine",
+        "dining room / salle à diner ",
+        "bedroom / chambre à coucher",
+        "living room / salon",
+        "bathroom / chambre de bain"
+      ],
+
+      companyOptions: [
+        "wife / conjointe",
+        "husband / conjoint ",
+        "coworkers / collègues",
+        "mother / mère",
+        "father / père",
+        "child / enfant",
+        "friend / ami",
+        "alone / seul"
+      ],
+
+      moodBeforeOptions: [
+        "stressed / stressé",
+        "grumpy / marabout",
+        "fine / bonne humeur",
+        "excited / excité"
+      ],
 
       proteinOptions: [
         "chicken / poulet",
@@ -425,6 +592,18 @@ export default {
         "quinoa",
         "oats / avoine"
       ],
+      reasonOptions: [
+        "I was hungry / j'avais faim",
+        "It was noon / Il était midi",
+        "It was a long time since I last eat / Il y a longtemps que j'ai mangé",
+        "I wasn`t feeling right / Je ne me sentait pas bien"
+      ],
+      moodAfterOptions: [
+        "stressed / stressé",
+        "grumpy / marabout",
+        "fine / bonne humeur",
+        "excited / excité"
+      ],
 
       // date picker
       pickerDate: new Date().toISOString().substr(0, 10),
@@ -439,8 +618,11 @@ export default {
         pickerTime: null,
         mealName: null,
         place: null,
+        placeOther: null,
         withWhom: null,
+        withWhomOther: null,
         mood: null,
+        moodBeforeOther: null,
         hunger: null,
         fullness: null,
         protein: null,
@@ -450,7 +632,9 @@ export default {
         carbs: null,
         carbsOther: null,
         reason: null,
-        moodAfter: null
+        reasonOther: null,
+        moodAfter: null,
+        moodAfterOther: null
       }
     };
   },
@@ -475,11 +659,16 @@ export default {
       form.carbs = null;
       form.carbsOther = null;
       form.reason = null;
+      form.reasonOther = null;
       form.moodAfter = null;
+      form.moodAfterOther = null;
       form.mealName = null;
       form.place = null;
+      form.placeOther = null;
       form.withWhom = null;
+      form.withWhomOther = null;
       form.mood = null;
+      form.moodBeforeOther = null;
       form.hunger = null;
       form.fullness = null;
       form.protein = null;
@@ -488,6 +677,11 @@ export default {
       (this.checkboxProtein = false),
         (this.checkboxVeggies = false),
         (this.checkboxCarbs = false);
+      this.checkboxPlace = false;
+      this.checkboxCompany = false;
+      this.checkboxMoodBefore = false;
+      this.checkboxReason = false;
+      this.checkboxMoodAfter = false;
     },
 
     submitForm() {
@@ -524,10 +718,10 @@ export default {
     "line2": "Protein sources",
     "line3": "Vegetable sources",
     "line4": "Carbohydrates sources",
-    "line104": "Place where the meal was consumed (Example: kitchen, living room, bedroom...)",
-    "line105": "With whom was the meal consumed (Example: husband, wife, mother, alone...)",
+    "line104": "Place where the meal was consumed",
+    "line105": "With whom was the meal consumed",
     "line106": "Level of hunger:",
-    "line107": "Mood before eating (Example: stressed, grumpy, fine, excited...)",
+    "line107": "Mood before eating",
     "line108": "Not at all",
     "line109": "Somewhat full",
     "line110": "Full",
@@ -536,13 +730,17 @@ export default {
     "line113": "Somewhat hungry",
     "line114": "hungry",
     "line115": "really hungry",
-    "line116": "Reason why you had this meal (Example: I was hungry, It was noon...)",
-    "line117": "Mood after eating (Example: grumpy, fine, excited...)",
+    "line116": "Reason why you had this meal",
+    "line117": "Mood after eating",
     "line118": "Level of fullness:",
     "line119": "Other",
     "line120": "Other source of proteins",
     "line121": "Other source of vegetables",
     "line122": "Other source of carbohydrates",
+    "line123": "Other place",
+    "line124": "Other company",
+    "line125": "Other mood",
+    "line126": "Other reason",
     "reviewBtn": "Confirm the form",
     "reviewBtn1": "Submit",
     "reviewBtn2": "Close",
@@ -551,6 +749,7 @@ export default {
     "reviewLine2": "Time:",
     "reviewLine3": "Name:",
     "reviewLine4": "Place where it was consumed:",
+    "reviewLine4.2": "Other place:",
     "reviewLine5": "With whom it was consumed:",
     "reviewLine6": "Level of hunger:",
     "reviewLine7": "Mood before eating:",
@@ -559,6 +758,7 @@ export default {
     "reviewLine10": "Sources of vegetables:",
     "reviewLine11": "Sources of carbohydrates:",
     "reviewLine12": "Reason why this meal was consumed:",
+    "reviewLine12.2": "Other Reason why this meal was consumed:",
     "reviewLine13": "Mood after eating:"
   },
   "fr": {
