@@ -1,171 +1,221 @@
 <template>
   <div>
-    <LoggedInUserInfos class="d-flex justify-end" />
+    <v-row class="d-flex justify-space-between">
+      <v-col>
+        <v-btn to="/landing" class="mt-5">add meal</v-btn>
+      </v-col>
+      <v-col>
+        <LoggedInUserInfos class="d-flex justify-end" />
+      </v-col>
+    </v-row>
     <v-container>
-      <v-btn @click="realtimeRead">{{ $t("line1") }}</v-btn>
-      <!-- {{item.form}} -->
-      <v-card v-for="item in formData" :key="item.id" class="ma-2">
+      <v-row align="center" justify="center">
         <div>
-          <!-- Time -->
-          <v-row>
-            <v-col cols="6">
-              <v-list-item>
-                <v-list-item-content>
-                  <v-list-item-title>{{ $t("line2") }}</v-list-item-title>
-                  <v-list-item-subtitle>
-                    {{ item.form.pickerDate }}
-                  </v-list-item-subtitle>
-                </v-list-item-content>
-              </v-list-item>
-            </v-col>
-            <v-col cols="6">
-              <v-list-item>
-                <v-list-item-content>
-                  <v-list-item-title>{{ $t("line3") }}</v-list-item-title>
-                  <v-list-item-subtitle>
-                    {{ item.form.pickerTime }}
-                  </v-list-item-subtitle>
-                </v-list-item-content>
-              </v-list-item>
-            </v-col>
-          </v-row>
-          <!-- Name -->
-          <v-row class="ma-2">
-            <v-list-item-title>{{ $t("line4") }}</v-list-item-title>
-            <v-list-item-subtitle class="ml-5">
-              {{ item.form.mealName }}
-            </v-list-item-subtitle>
-          </v-row>
-          <!-- place -->
-
-          <v-list-item-title class="ma-2">{{ $t("line5") }}</v-list-item-title>
-          <v-row v-for="arrItem in item.form.place" :key="arrItem" class="ma-2">
-            <li class="ml-5">{{ arrItem }}</li>
-          </v-row>
-          <v-row class="ma-2">
-            <li v-if="item.form.placeOther != null" class="ml-5">
-              {{ item.form.placeOther }}
-            </li>
-          </v-row>
-
-          <!-- With whom -->
-
-          <v-list-item-title class="ma-2">{{ $t("line6") }}</v-list-item-title>
-          <v-row
-            v-for="arrItem in item.form.withWhom"
-            :key="arrItem"
-            class="ma-2"
-          >
-            <li class="ml-5">{{ arrItem }}</li>
-          </v-row>
-          <v-row class="ma-2">
-            <li v-if="item.form.withWhomOther != null" class="ml-5">
-              {{ item.form.withWhomOther }}
-            </li>
-          </v-row>
-
-          <!-- Level of hunger -->
-          <v-row class="ma-2">
-            <v-list-item-title>{{ $t("line7") }}</v-list-item-title>
-            <v-list-item-subtitle class="ml-5">
-              {{ item.form.hunger }}
-            </v-list-item-subtitle>
-          </v-row>
-
-          <!-- Mood before -->
-
-          <v-list-item-title class="ma-2">{{ $t("line8") }}</v-list-item-title>
-          <v-row v-for="arrItem in item.form.mood" :key="arrItem" class="ma-2">
-            <li class="ml-5">{{ arrItem }}</li>
-          </v-row>
-          <v-row class="ma-2">
-            <li v-if="item.form.moodBeforeOther != null" class="ml-5">
-              {{ item.form.moodBeforeOther }}
-            </li>
-          </v-row>
-
-          <!-- Level of fullness -->
-          <v-row class="ma-2">
-            <v-list-item-title>{{ $t("line9") }}</v-list-item-title>
-            <v-list-item-subtitle class="ml-5">
-              {{ item.form.fullness }}
-            </v-list-item-subtitle>
-          </v-row>
-
-          <!-- Proteins -->
-          <v-list-item-title class="ma-2">{{ $t("line10") }}</v-list-item-title>
-          <v-row
-            v-for="arrItem in item.form.protein"
-            :key="arrItem"
-            class="ma-2"
-          >
-            <li class="ml-5">{{ arrItem }}</li>
-          </v-row>
-          <v-row class="ma-2">
-            <li v-if="item.form.proteinOther != null" class="ml-5">
-              {{ item.form.proteinOther }}
-            </li>
-          </v-row>
-
-          <!-- Veggies -->
-          <v-list-item-title class="ma-2">{{ $t("line11") }}</v-list-item-title>
-          <v-row
-            v-for="arrItem in item.form.veggies"
-            :key="arrItem"
-            class="ma-2"
-          >
-            <li class="ml-5">{{ arrItem }}</li>
-          </v-row>
-          <v-row class="ma-2">
-            <li v-if="item.form.veggiesOther != null" class="ml-5">
-              {{ item.form.veggiesOther }}
-            </li>
-          </v-row>
-
-          <!-- Carbs -->
-          <v-list-item-title class="ma-2">{{ $t("line12") }}</v-list-item-title>
-          <v-row v-for="arrItem in item.form.carbs" :key="arrItem" class="ma-2">
-            <li class="ml-5">{{ arrItem }}</li>
-          </v-row>
-          <v-row>
-            <li v-if="item.form.carbsOther != null" class="ml-5">
-              {{ item.form.carbsOther }}
-            </li>
-          </v-row>
-
-          <!-- Reason -->
-
-          <v-list-item-title class="ma-2">{{ $t("line13") }}</v-list-item-title>
-          <v-row
-            v-for="arrItem in item.form.reason"
-            :key="arrItem"
-            class="ma-2"
-          >
-            <li class="ml-5">{{ arrItem }}</li>
-          </v-row>
-          <v-row class="ma-2">
-            <li v-if="item.form.reasonOther != null" class="ml-5">
-              {{ item.form.reasonOther }}
-            </li>
-          </v-row>
-
-          <!-- Mood After -->
-
-          <v-list-item-title class="ma-2">{{ $t("line14") }}</v-list-item-title>
-          <v-row
-            v-for="arrItem in item.form.moodAfter"
-            :key="arrItem"
-            class="ma-2"
-          >
-            <li class="ml-5">{{ arrItem }}</li>
-          </v-row>
-          <v-row class="ma-2">
-            <li v-if="item.form.moodAfterOther != null" class="ml-5">
-              {{ item.form.moodAfterOther }}
-            </li>
-          </v-row>
+          <v-btn @click="realtimeRead">{{ $t("line1") }}</v-btn>
         </div>
-      </v-card>
+      </v-row>
+
+      <!-- expansion panel focusable -->
+      <v-row>
+        <v-col cols="2"></v-col>
+        <v-col cols="8">
+          <v-expansion-panels focusable>
+            <v-expansion-panel v-for="item in formData" :key="item.id">
+              <v-expansion-panel-header>
+                {{ item.form.mealName }} on {{ item.form.pickerDate }} at
+                {{ item.form.pickerTime }}
+              </v-expansion-panel-header>
+              <!-- Now, infos -->
+              <v-expansion-panel-content>
+                <!-- place and withWhom -->
+                <v-row>
+                  <!-- place -->
+                  <v-col cols="6">
+                    <v-list-item-title>{{ $t("line5") }}</v-list-item-title>
+                    <v-list-item-subtitle>
+                      <v-row
+                        v-for="arrItem in item.form.place"
+                        :key="arrItem"
+                        class="ma-2"
+                      >
+                        <li class="ml-5">{{ arrItem }}</li>
+                      </v-row>
+                      <v-row class="ma-2">
+                        <li v-if="item.form.placeOther != null" class="ml-5">
+                          {{ item.form.placeOther }}
+                        </li>
+                      </v-row>
+                    </v-list-item-subtitle>
+                  </v-col>
+                  <!-- with whom -->
+                  <v-col cols="6">
+                    <v-list-item-title>{{ $t("line6") }}</v-list-item-title>
+                    <v-list-item-subtitle>
+                      <v-row
+                        v-for="arrItem in item.form.withWhom"
+                        :key="arrItem"
+                        class="ma-2"
+                      >
+                        <li class="ml-5">{{ arrItem }}</li>
+                      </v-row>
+                      <v-row class="ma-2">
+                        <li v-if="item.form.withWhomOther != null" class="ml-5">
+                          {{ item.form.withWhomOther }}
+                        </li>
+                      </v-row>
+                    </v-list-item-subtitle>
+                  </v-col>
+                </v-row>
+                <!-- reason and mood before -->
+                <v-row>
+                  <!-- reason -->
+                  <v-col cols="6">
+                    <v-list-item-title>{{ $t("line13") }}</v-list-item-title>
+                    <v-list-item-subtitle>
+                      <v-row
+                        v-for="arrItem in item.form.reason"
+                        :key="arrItem"
+                        class="ma-2"
+                      >
+                        <li class="ml-5">{{ arrItem }}</li>
+                      </v-row>
+                      <v-row class="ma-2">
+                        <li v-if="item.form.reasonOther != null" class="ml-5">
+                          {{ item.form.reasonOther }}
+                        </li>
+                      </v-row>
+                    </v-list-item-subtitle>
+                  </v-col>
+                  <!-- mood before -->
+                  <v-col cols="6">
+                    <v-list-item-title>{{ $t("line8") }}</v-list-item-title>
+                    <v-list-item-subtitle>
+                      <v-row
+                        v-for="arrItem in item.form.mood"
+                        :key="arrItem"
+                        class="ma-2"
+                      >
+                        <li class="ml-5">{{ arrItem }}</li>
+                      </v-row>
+                      <v-row class="ma-2">
+                        <li
+                          v-if="item.form.moodBeforeOther != null"
+                          class="ml-5"
+                        >
+                          {{ item.form.moodBeforeOther }}
+                        </li>
+                      </v-row>
+                    </v-list-item-subtitle>
+                  </v-col>
+                </v-row>
+                <!-- hunger and prots -->
+                <v-row>
+                  <!-- hunger -->
+                  <v-col cols="6">
+                    <v-list-item-title>{{ $t("line7") }}</v-list-item-title>
+                    <v-list-item-subtitle>
+                      <v-row>
+                        <li class="ml-5">{{ item.form.hunger }}</li>
+                      </v-row>
+                    </v-list-item-subtitle>
+                  </v-col>
+                  <!-- prot -->
+                  <v-col cols="6">
+                    <v-list-item-title>{{ $t("line10") }}</v-list-item-title>
+                    <v-list-item-subtitle>
+                      <v-row
+                        v-for="arrItem in item.form.protein"
+                        :key="arrItem"
+                        class="ma-2"
+                      >
+                        <li class="ml-5">{{ arrItem }}</li>
+                      </v-row>
+                      <v-row class="ma-2">
+                        <li v-if="item.form.proteinOther != null" class="ml-5">
+                          {{ item.form.proteinOther }}
+                        </li>
+                      </v-row>
+                    </v-list-item-subtitle>
+                  </v-col>
+                </v-row>
+                <!-- vegg and carbs -->
+                <v-row>
+                  <!-- vegg -->
+                  <v-col cols="6">
+                    <v-list-item-title>{{ $t("line11") }}</v-list-item-title>
+                    <v-list-item-subtitle>
+                      <v-row
+                        v-for="arrItem in item.form.veggies"
+                        :key="arrItem"
+                        class="ma-2"
+                      >
+                        <li class="ml-5">{{ arrItem }}</li>
+                      </v-row>
+                      <v-row class="ma-2">
+                        <li v-if="item.form.veggiesOther != null" class="ml-5">
+                          {{ item.form.veggiesOther }}
+                        </li>
+                      </v-row>
+                    </v-list-item-subtitle>
+                  </v-col>
+                  <!-- carbs -->
+                  <v-col cols="6">
+                    <v-list-item-title>{{ $t("line12") }}</v-list-item-title>
+                    <v-list-item-subtitle>
+                      <v-row
+                        v-for="arrItem in item.form.carbs"
+                        :key="arrItem"
+                        class="ma-2"
+                      >
+                        <li class="ml-5">{{ arrItem }}</li>
+                      </v-row>
+                      <v-row class="ma-2">
+                        <li v-if="item.form.carbsOther != null" class="ml-5">
+                          {{ item.form.carbsOther }}
+                        </li>
+                      </v-row>
+                    </v-list-item-subtitle>
+                  </v-col>
+                </v-row>
+                <!-- fullness and mood after -->
+                <v-row>
+                  <!-- fullness -->
+                  <v-col cols="6">
+                    <v-list-item-title>{{ $t("line9") }}</v-list-item-title>
+                    <v-list-item-subtitle>
+                      <v-row>
+                        <li class="ml-5">{{ item.form.fullness }}</li>
+                      </v-row>
+                    </v-list-item-subtitle>
+                  </v-col>
+                  <!-- mood aftfer -->
+                  <v-col cols="6">
+                    <v-list-item-title>{{ $t("line14") }}</v-list-item-title>
+                    <v-list-item-subtitle>
+                      <v-row
+                        v-for="arrItem in item.form.moodAfter"
+                        :key="arrItem"
+                        class="ma-2"
+                      >
+                        <li class="ml-5">{{ arrItem }}</li>
+                      </v-row>
+                      <v-row class="ma-2">
+                        <li
+                          v-if="item.form.moodAfterOther != null"
+                          class="ml-5"
+                        >
+                          {{ item.form.moodAfterOther }}
+                        </li>
+                      </v-row>
+                    </v-list-item-subtitle>
+                  </v-col>
+                </v-row>
+              </v-expansion-panel-content>
+            </v-expansion-panel>
+          </v-expansion-panels>
+        </v-col>
+        <v-col cols="2"></v-col>
+      </v-row>
     </v-container>
   </div>
 </template>

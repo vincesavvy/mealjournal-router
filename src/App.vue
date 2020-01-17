@@ -24,13 +24,22 @@ export default {
       langs: ["en", "fr"]
     };
   },
+  created() {
+    const locale = localStorage.getItem("locale");
+
+    if (locale) {
+      this.$i18n.locale = locale;
+    }
+  },
 
   methods: {
     english() {
       this.$i18n.locale = "en";
+      localStorage.setItem("locale", "en");
     },
     french() {
       this.$i18n.locale = "fr";
+      localStorage.setItem("locale", "fr");
     }
   }
 };
