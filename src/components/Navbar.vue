@@ -13,12 +13,6 @@
             />
           </v-avatar>
           <v-card-title class="white--text display-1">MealJournal</v-card-title>
-          <div>
-            <div style="margin-right:15px">testing:</div>
-            <v-btn to="/" style="margin-right:15px">to home</v-btn>
-            <v-btn to="/Landing" style="margin-right:15px">to landing</v-btn>
-            <v-btn to="/signup" style="margin-right:15px">to signup</v-btn>
-          </div>
         </div>
 
         <v-spacer></v-spacer>

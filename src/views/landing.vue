@@ -1,6 +1,13 @@
 <template>
   <div>
-    <LoggedInUserInfos class="d-flex justify-end" />
+    <v-row class="d-flex justify-space-between">
+      <v-col>
+        <v-btn to="/pastmeals" class="mt-5">past meals</v-btn>
+      </v-col>
+      <v-col>
+        <LoggedInUserInfos class="d-flex justify-end" />
+      </v-col>
+    </v-row>
 
     <!-- Large screens -->
     <template v-if="$vuetify.breakpoint.mdAndUp">
@@ -9,9 +16,7 @@
           <v-col cols="2"></v-col>
           <v-col cols="8">
             <div align="center" justify="center">
-              <v-btn @click="getEmailAsync" color="warning">{{
-                $t("line5")
-              }}</v-btn>
+              <v-btn @click="getEmailAsync" color="warning">{{ $t("line5") }}</v-btn>
             </div>
             <AddMealForm />
           </v-col>
@@ -32,16 +37,11 @@
     <v-dialog v-model="profileDialog" max-width="344" persistent>
       <v-card class="mx-auto">
         <v-container>
-          <v-card-title>{{ $t("line6") }} </v-card-title>
-          <p>
-            {{ $t("line7") }}
-          </p>
+          <v-card-title>{{ $t("line6") }}</v-card-title>
+          <p>{{ $t("line7") }}</p>
           <p>{{ $t("line8") }}</p>
           <v-container>
-            <v-text-field
-              label="Display name"
-              v-model="userDisplayName"
-            ></v-text-field>
+            <v-text-field label="Display name" v-model="userDisplayName"></v-text-field>
           </v-container>
           <v-container>{{ $t("line9") }}</v-container>
           <v-container>
@@ -49,15 +49,12 @@
           </v-container>
 
           <v-card-actions>
-            <v-btn text color="deep-purple accent-4" @click="saveInfoDB">{{
-              $t("line10")
-            }}</v-btn>
+            <v-btn text color="deep-purple accent-4" @click="saveInfoDB">{{ $t("line10") }}</v-btn>
             <v-btn
               text
               color="deep-purple accent-4"
               @click="profileDialog = false"
-              >{{ $t("line11") }}</v-btn
-            >
+            >{{ $t("line11") }}</v-btn>
           </v-card-actions>
         </v-container>
       </v-card>
