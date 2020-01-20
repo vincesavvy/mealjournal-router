@@ -72,9 +72,9 @@
             <v-col></v-col>
             <v-toolbar flat dense>
               <v-toolbar-items>
-                <v-btn to="/signup" text x-small rounded color="primary">{{
-                  $t("line6")
-                }}</v-btn>
+                <v-btn to="/signup" text x-small rounded color="primary">
+                  {{ $t("line6") }}
+                </v-btn>
                 <!-- line -->
                 <v-divider class="mx-4" inset vertical></v-divider>
                 <v-btn text x-small color="primary">{{ $t("line7") }}</v-btn>
@@ -133,9 +133,8 @@ export default {
     },
 
     validate() {
-      if (this.$refs.form.validate()) {
-        this.snackbar = true;
-      }
+      console.log("email: ", this.email, "pwd: ", this.password);
+      firebase.auth().signInWithEmailAndPassword(this.email, this.password);
     }
   }
 };

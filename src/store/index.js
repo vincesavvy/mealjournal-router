@@ -30,6 +30,7 @@ export default new Vuex.Store({
         commit("setUserInfo", info);
       });
     },
+
     signOut({ commit }) {
       firebase
         .auth()

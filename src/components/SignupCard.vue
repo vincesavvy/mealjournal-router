@@ -17,28 +17,28 @@
     <v-form v-model="valid">
       <!-- email -->
       <v-container>
-        <v-text-field v-model="email" :rules="emailRules" required>
+        <v-text-field type="email" v-model="email" :rules="emailRules" required>
           <template v-slot:label>{{ $t("line3") }}</template>
         </v-text-field>
 
-        <!-- name -->
-        <v-text-field v-model="name" :rules="nameRules" required>
-          <template v-slot:label>{{ $t("line4") }}</template>
-        </v-text-field>
-        <br />
         <!-- password -->
-        <v-text-field v-model="password" :rules="passwordRules" required>
+        <v-text-field
+          type="password"
+          v-model="password"
+          :rules="passwordRules"
+          required
+        >
           <template v-slot:label>{{ $t("line5") }}</template>
         </v-text-field>
 
-        <!-- password confirmation -->
+        <!-- password confirmation
         <v-text-field
           v-model="confirmPassword"
           :rules="confirmPasswordRules"
           required
         >
           <template v-slot:label>{{ $t("line6") }}</template>
-        </v-text-field>
+        </v-text-field>-->
 
         <!-- button -->
         <v-row>
@@ -58,13 +58,15 @@
 </template>
 
 <script>
+import firebase from "firebase/app";
+
 export default {
   data: () => ({
     valid: false,
     email: "",
-    name: "",
     password: "",
     confirmPassword: "",
+    authUser: null,
 
     // functions
     emailRules: [
@@ -75,13 +77,33 @@ export default {
     passwordRules: [v => !!v || "Required / Requis"],
     confirmPasswordRules: [v => !!v || "Required / Requis"]
   }),
+
   methods: {
+    /* eslint-disable no-alert, no-console */
     validate() {
-      console.log("ho ohho"); // eslint-disable-line no-console
-      if (this.$refs.form.validate()) {
-        this.snackbar = true;
-      }
+      console.log(
+        "Validate! ",
+        "email: ",
+        this.email,
+        " And the password: ",
+        this.password
+      );
+      //this function, "createUserWithEmailAndPassword", will also log the user in, so maybe redirect him afterwards...
+      firebase
+        .auth()
+        .createUserWithEmailAndPassword(this.email, this.password)
+        .then(() => {
+          this.$router.push("/landing");
+        })
+        .catch(e => {
+          console.log(e);
+        });
     }
+  },
+  created() {
+    firebase.auth().onAuthStateChanged(user => {
+      this.authUser = user;
+    });
   }
 };
 </script>
