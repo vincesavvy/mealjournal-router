@@ -1,4 +1,4 @@
-# route
+# MealJournal
 
 ## Project setup
 ```
