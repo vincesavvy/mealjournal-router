@@ -15,6 +15,8 @@
     </v-card-text>
     <!-- FORM -->
     <v-form v-model="valid">
+      <h2 v-if="authUser">hello {{ authUser.email }}</h2>
+      <h2 v-if="authUser">email verified? {{ authUser.emailVerified }}</h2>
       <!-- email -->
       <v-container>
         <v-text-field type="email" v-model="email" :rules="emailRules" required>
@@ -22,14 +24,28 @@
         </v-text-field>
 
         <!-- password -->
-        <v-text-field
-          type="password"
-          v-model="password"
-          :rules="passwordRules"
-          required
-        >
-          <template v-slot:label>{{ $t("line5") }}</template>
-        </v-text-field>
+        <div v-if="error">
+          <p class="red--text">{{ error.message }}</p>
+          <v-text-field
+            type="password"
+            v-model="password"
+            :rules="passwordRules"
+            required
+          >
+            <template v-slot:label>{{ $t("line5") }}</template>
+          </v-text-field>
+        </div>
+
+        <div v-else>
+          <v-text-field
+            type="password"
+            v-model="password"
+            :rules="passwordRules"
+            required
+          >
+            <template v-slot:label>{{ $t("line5") }}</template>
+          </v-text-field>
+        </div>
 
         <!-- password confirmation
         <v-text-field
@@ -62,11 +78,13 @@ import firebase from "firebase/app";
 
 export default {
   data: () => ({
+    error: null,
     valid: false,
     email: "",
     password: "",
     confirmPassword: "",
     authUser: null,
+    emailVerified: null,
 
     // functions
     emailRules: [
@@ -93,10 +111,25 @@ export default {
         .auth()
         .createUserWithEmailAndPassword(this.email, this.password)
         .then(() => {
+          this.verifyEmail();
           this.$router.push("/landing");
         })
-        .catch(e => {
-          console.log(e);
+        .catch(error => {
+          this.error = error;
+          throw error;
+        });
+    },
+
+    verifyEmail() {
+      var user = firebase.auth().currentUser;
+
+      user
+        .sendEmailVerification()
+        .then(function() {
+          console.log("email verification sent.");
+        })
+        .catch(function(error) {
+          throw error;
         });
     }
   },

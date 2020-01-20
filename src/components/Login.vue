@@ -72,12 +72,14 @@
             <v-col></v-col>
             <v-toolbar flat dense>
               <v-toolbar-items>
-                <v-btn to="/signup" text x-small rounded color="primary">
-                  {{ $t("line6") }}
-                </v-btn>
+                <v-btn to="/signup" text x-small rounded color="primary">{{
+                  $t("line6")
+                }}</v-btn>
                 <!-- line -->
                 <v-divider class="mx-4" inset vertical></v-divider>
-                <v-btn text x-small color="primary">{{ $t("line7") }}</v-btn>
+                <v-btn to="/forgot" text x-small color="primary">
+                  {{ $t("line7") }}
+                </v-btn>
               </v-toolbar-items>
             </v-toolbar>
           </v-row>
@@ -150,7 +152,7 @@ export default {
     "line4": "Email",
     "line5": "Password",
     "line6": "new user sign-up",
-    "line7": "Forgot your password?"
+    "line7": "Forgot your password"
   },
   "fr": {
     "line1": "Afin d'utiliser l'application MealJournal, vous devrez vous connecter à votre compte.",
