@@ -3,14 +3,20 @@
   <div>
     <div v-if="user">
       <v-row class="mr-2" align="center" justify="end">
-        <p class="mt-7">{{ user.name }}</p>
-        <v-avatar color="indigo" size="35" class="ml-2 mt-2">
-          <v-img :src="user.photo" />
-        </v-avatar>
+        <v-col>
+          <p class="mt-7 font-weight-bold subtitle-1">{{ $t("line1") }}</p>
+        </v-col>
+        <v-col>
+          <p class="mt-7">{{ user.email }}</p>
+        </v-col>
+
+        <!-- <v-avatar color="indigo" size="35" class="ml-2 mt-2">
+        <v-img :src="user.photo" />-->
+        <!-- </v-avatar> -->
       </v-row>
     </div>
 
-    <v-btn @click="logOut" class="ml-3 mt-4" text icon color="red" large>
+    <v-btn @click="logOut" class="ml-3 mt-8" text icon color="red" large>
       <v-icon>mdi-logout</v-icon>
     </v-btn>
   </div>
@@ -41,3 +47,14 @@ export default {
   }
 };
 </script>
+
+<i18n>
+{
+  "en": {
+    "line1": "User: "
+  },
+  "fr": {
+    "line1": "Utilisateur: "
+  }
+}
+</i18n>
