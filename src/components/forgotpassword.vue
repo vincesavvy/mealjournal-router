@@ -1,6 +1,10 @@
 <template>
   <v-card class="mx-auto" max-width="400">
-    <v-img class="white--text align-end" height="200px" src="@/assets/signup.png"></v-img>
+    <v-img
+      class="white--text align-end"
+      height="200px"
+      src="@/assets/signup.png"
+    ></v-img>
 
     <v-card-text class="text--primary">
       <p style="text-align:center">{{ $t("line1") }}</p>
@@ -21,9 +25,7 @@
       </v-container>
       <div align="center">
         <v-btn color="success" class="mb-5" @click="sendRecoveryEmail">
-          {{
-          $t("line4")
-          }}
+          {{ $t("line4") }}
         </v-btn>
       </div>
     </v-form>

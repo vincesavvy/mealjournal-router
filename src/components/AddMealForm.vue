@@ -360,9 +360,9 @@
             </v-row>
           </v-container>
           <v-row align="center" justify="center">
-            <v-btn color="success" @click="confirmationBtn">{{
-              $t("reviewBtn")
-            }}</v-btn>
+            <v-btn color="success" @click="confirmationBtn">
+              {{ $t("reviewBtn") }}
+            </v-btn>
           </v-row>
         </v-form>
       </v-container>
@@ -400,96 +400,96 @@
           <v-list-item-content>
             <!-- name -->
             <v-list-item-title>{{ $t("reviewLine3") }}</v-list-item-title>
-            <v-list-item-subtitle class="mb-5">
-              {{ this.form.mealName }}
-            </v-list-item-subtitle>
+            <v-list-item-subtitle class="mb-5">{{
+              this.form.mealName
+            }}</v-list-item-subtitle>
             <!-- place -->
             <v-list-item-title>{{ $t("reviewLine4") }}</v-list-item-title>
             <v-list-item-subtitle
               class="mb-5"
-              v-for="item in this.form.place"
-              :key="item"
+              v-for="(item, i) in this.form.place"
+              :key="(i + 1) * 10"
               >{{ item }}</v-list-item-subtitle
             >
-            <v-list-item-subtitle class="mb-5">
-              {{ form.placeOther }}
-            </v-list-item-subtitle>
+            <v-list-item-subtitle class="mb-5">{{
+              form.placeOther
+            }}</v-list-item-subtitle>
             <!-- company -->
             <v-list-item-title>{{ $t("reviewLine5") }}</v-list-item-title>
             <v-list-item-subtitle
               class="mb-5"
-              v-for="item in this.form.withWhom"
-              :key="item"
+              v-for="(item, i) in this.form.withWhom"
+              :key="(i + 1) * 100"
               >{{ item }}</v-list-item-subtitle
             >
-            <v-list-item-subtitle class="mb-5">
-              {{ form.withWhomOther }}
-            </v-list-item-subtitle>
+            <v-list-item-subtitle class="mb-5">{{
+              form.withWhomOther
+            }}</v-list-item-subtitle>
             <!-- hunger -->
             <v-list-item-title>{{ $t("reviewLine6") }}</v-list-item-title>
-            <v-list-item-subtitle class="mb-5">
-              {{ this.form.hunger }}
-            </v-list-item-subtitle>
+            <v-list-item-subtitle class="mb-5">{{
+              this.form.hunger
+            }}</v-list-item-subtitle>
             <!-- mood before-->
             <v-list-item-title>{{ $t("reviewLine7") }}</v-list-item-title>
             <v-list-item-subtitle
               class="mb-5"
-              v-for="item in this.form.mood"
-              :key="item"
+              v-for="(item, i) in this.form.mood"
+              :key="(i + 1) * 1000"
               >{{ item }}</v-list-item-subtitle
             >
-            <v-list-item-subtitle class="mb-5">
-              {{ form.moodBeforeOther }}
-            </v-list-item-subtitle>
+            <v-list-item-subtitle class="mb-5">{{
+              form.moodBeforeOther
+            }}</v-list-item-subtitle>
             <!-- fullness -->
             <v-list-item-title>{{ $t("reviewLine8") }}</v-list-item-title>
-            <v-list-item-subtitle class="mb-5">
-              {{ this.form.fullness }}
-            </v-list-item-subtitle>
+            <v-list-item-subtitle class="mb-5">{{
+              this.form.fullness
+            }}</v-list-item-subtitle>
             <!-- protein -->
             <v-list-item-title>{{ $t("reviewLine9") }}</v-list-item-title>
             <v-list-item-subtitle
               class="mb-5"
-              v-for="item in this.form.protein"
-              :key="item"
+              v-for="(item, i) in this.form.protein"
+              :key="(i + 1) * 10000"
               >{{ item }}</v-list-item-subtitle
             >
-            <v-list-item-subtitle class="mb-5">
-              {{ form.proteinOther }}
-            </v-list-item-subtitle>
+            <v-list-item-subtitle class="mb-5">{{
+              form.proteinOther
+            }}</v-list-item-subtitle>
             <!-- veggies -->
             <v-list-item-title>{{ $t("reviewLine10") }}</v-list-item-title>
             <v-list-item-subtitle
               class="mb-5"
-              v-for="item in this.form.veggies"
-              :key="item"
+              v-for="(item, i) in this.form.veggies"
+              :key="(i + 1) * 100000"
               >{{ item }}</v-list-item-subtitle
             >
-            <v-list-item-subtitle class="mb-5">
-              {{ form.veggiesOther }}
-            </v-list-item-subtitle>
+            <v-list-item-subtitle class="mb-5">{{
+              form.veggiesOther
+            }}</v-list-item-subtitle>
             <!-- carbs -->
             <v-list-item-title>{{ $t("reviewLine11") }}</v-list-item-title>
             <v-list-item-subtitle
               class="mb-5"
               v-for="(item, i) in this.form.carbs"
-              :key="i * 10"
+              :key="(i + 1) * 1000000"
               >{{ item }}</v-list-item-subtitle
             >
-            <v-list-item-subtitle class="mb-5">
-              {{ form.carbsOther }}
-            </v-list-item-subtitle>
+            <v-list-item-subtitle class="mb-5">{{
+              form.carbsOther
+            }}</v-list-item-subtitle>
             <!-- reason -->
             <v-list-item-title>{{ $t("reviewLine12") }}</v-list-item-title>
             <v-list-item-subtitle
               class="mb-5"
-              v-for="item in this.form.reason"
-              :key="item"
+              v-for="(item, i) in this.form.reason"
+              :key="(i + 1) * 10000000"
               >{{ item }}</v-list-item-subtitle
             >
-            <v-list-item-subtitle class="mb-5">
-              {{ form.reasonOther }}
-            </v-list-item-subtitle>
+            <v-list-item-subtitle class="mb-5">{{
+              form.reasonOther
+            }}</v-list-item-subtitle>
             <!-- mood after  -->
 
             <v-list-item-title>{{ $t("reviewLine13") }}</v-list-item-title>
@@ -499,9 +499,9 @@
               :key="item"
               >{{ item }}</v-list-item-subtitle
             >
-            <v-list-item-subtitle class="mb-5">
-              {{ form.moodAfterOther }}
-            </v-list-item-subtitle>
+            <v-list-item-subtitle class="mb-5">{{
+              form.moodAfterOther
+            }}</v-list-item-subtitle>
           </v-list-item-content>
         </v-list-item>
         <v-list-item>
@@ -674,9 +674,9 @@ export default {
       form.protein = null;
       form.proteinOther = null;
 
-      (this.checkboxProtein = false),
-        (this.checkboxVeggies = false),
-        (this.checkboxCarbs = false);
+      this.checkboxProtein = false;
+      this.checkboxVeggies = false;
+      this.checkboxCarbs = false;
       this.checkboxPlace = false;
       this.checkboxCompany = false;
       this.checkboxMoodBefore = false;
@@ -787,12 +787,19 @@ export default {
     "line120": "Autre source de proteines",
     "line121": "Autre source de légumes",
     "line122": "Autre source de féculents",
+    "line123": "Autre place",
+    "line124": "Autre compagnie",
+    "line125": "Autre humeur",
+    "line126": "Autre raison",
     "reviewBtn": "Confirmer le formulaire",
+    "reviewBtn1": "Soumettre",
+    "reviewBtn2": "Fermer",
     "reviewLine00": "Ces informations sont exactes?",
     "reviewLine1": "Date:",
     "reviewLine2": "Heure:",
     "reviewLine3": "Nom:",
     "reviewLine4": "Endroit où le repas à été consommé:",
+    "reviewLine4.2": "Autre place:",
     "reviewLine5": "Avec qui le repas à été consommé:",
     "reviewLine6": "Niveau de faim:",
     "reviewLine7": "Humeur avant de manger:",
@@ -801,6 +808,7 @@ export default {
     "reviewLine10": "Sources de légumes:",
     "reviewLine11": "Sources de féculents:",
     "reviewLine12": "Raison pour laquelle le repas a été consommé:",
+    "reviewLine12.2": "Autre raison pour laquelle le repas à été consommé:",
     "reviewLine13": "Humeur après avoir mangé:"
   }
 }

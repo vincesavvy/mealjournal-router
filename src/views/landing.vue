@@ -161,7 +161,6 @@ export default {
         });
       });
       this.formData = info;
-      console.log("Realtime, baby!");
     }
 
     // saveInfoDBv2() {
@@ -216,6 +215,5 @@ export default {
     "line10": "Sauvegarder",
     "line11": "Fermer"
   }
-
 }
 </i18n>

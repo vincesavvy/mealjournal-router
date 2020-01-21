@@ -136,7 +136,15 @@ export default {
 
     validate() {
       console.log("email: ", this.email, "pwd: ", this.password);
-      firebase.auth().signInWithEmailAndPassword(this.email, this.password);
+      firebase
+        .auth()
+        .signInWithEmailAndPassword(this.email, this.password)
+        .then(() => {
+          this.$router.push("/landing");
+        })
+        .catch(e => {
+          console.log(e);
+        });
     }
   }
 };
@@ -162,9 +170,6 @@ export default {
     "line5": "Mot de passe",
     "line6": "nouvel utilisateur",
     "line7": "oublié votre mot de passe"
-
-
-
   }
 }
 </i18n>

@@ -47,15 +47,6 @@
           </v-text-field>
         </div>
 
-        <!-- password confirmation
-        <v-text-field
-          v-model="confirmPassword"
-          :rules="confirmPasswordRules"
-          required
-        >
-          <template v-slot:label>{{ $t("line6") }}</template>
-        </v-text-field>-->
-
         <!-- button -->
         <v-row>
           <v-card-actions>
