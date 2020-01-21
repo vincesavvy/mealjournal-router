@@ -256,12 +256,10 @@ export default {
 
       ref.onSnapshot(snapArray => {
         snapArray.forEach(doc => {
-          console.log(doc.data());
           info.push(doc.data());
         });
       });
       this.formData = info;
-      console.log("Realtime, baby!");
     }
   },
   created() {}

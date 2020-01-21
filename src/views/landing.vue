@@ -16,9 +16,9 @@
           <v-col cols="2"></v-col>
           <v-col cols="8">
             <div align="center" justify="center">
-              <v-btn @click="getEmailAsync" color="warning">{{
-                $t("line5")
-              }}</v-btn>
+              <v-btn @click="getEmailAsync" color="warning">
+                {{ $t("line5") }}
+              </v-btn>
             </div>
             <AddMealForm />
           </v-col>
@@ -54,9 +54,9 @@
           </v-container>
 
           <v-card-actions>
-            <v-btn text color="deep-purple accent-4" @click="saveInfoDB">{{
-              $t("line10")
-            }}</v-btn>
+            <v-btn text color="deep-purple accent-4" @click="saveInfoDB">
+              {{ $t("line10") }}
+            </v-btn>
             <v-btn
               text
               color="deep-purple accent-4"
@@ -121,8 +121,9 @@ export default {
           email: this.$store.getters.profileInfo.email,
           uid: this.$store.getters.profileInfo.userID
         })
-        .then(console.log("Document written successfully"))
-        .catch(error => console.log(error));
+        .catch(function(error) {
+          throw error;
+        });
     },
 
     // readInfoDB() {
@@ -156,7 +157,6 @@ export default {
 
       ref.onSnapshot(snapArray => {
         snapArray.forEach(doc => {
-          console.log(doc.data());
           info.push(doc.data());
         });
       });

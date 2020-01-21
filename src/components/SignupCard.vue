@@ -88,15 +88,7 @@ export default {
   }),
 
   methods: {
-    /* eslint-disable no-alert, no-console */
     validate() {
-      console.log(
-        "Validate! ",
-        "email: ",
-        this.email,
-        " And the password: ",
-        this.password
-      );
       //this function, "createUserWithEmailAndPassword", will also log the user in, so maybe redirect him afterwards...
       firebase
         .auth()
@@ -114,14 +106,9 @@ export default {
     verifyEmail() {
       var user = firebase.auth().currentUser;
 
-      user
-        .sendEmailVerification()
-        .then(function() {
-          console.log("email verification sent.");
-        })
-        .catch(function(error) {
-          throw error;
-        });
+      user.sendEmailVerification().catch(function(error) {
+        throw error;
+      });
     }
   },
   created() {

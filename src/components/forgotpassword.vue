@@ -24,9 +24,9 @@
         </v-text-field>
       </v-container>
       <div align="center">
-        <v-btn color="success" class="mb-5" @click="sendRecoveryEmail">
-          {{ $t("line4") }}
-        </v-btn>
+        <v-btn color="success" class="mb-5" @click="sendRecoveryEmail">{{
+          $t("line4")
+        }}</v-btn>
       </div>
     </v-form>
   </v-card>
@@ -50,14 +50,9 @@ export default {
     sendRecoveryEmail() {
       var auth = firebase.auth();
 
-      auth
-        .sendPasswordResetEmail(this.email)
-        .then(function() {
-          console.log("link sent");
-        })
-        .catch(function(error) {
-          throw error;
-        });
+      auth.sendPasswordResetEmail(this.email).catch(function(error) {
+        throw error;
+      });
     }
   }
 };

@@ -17,10 +17,8 @@ export default new Vuex.Store({
     }
   },
   actions: {
-    /* eslint-disable no-alert, no-console */
     getUserInfo({ commit }) {
       firebase.auth().onAuthStateChanged(function(user) {
-        //console.log(user);
         let info = {
           name: user.displayName,
           photo: user.photoURL,
@@ -36,15 +34,11 @@ export default new Vuex.Store({
         .auth()
         .signOut()
         .then(
-          // console.log("Sign-out successful.");
-          //.
-          /* 
-          We need to use a browser property "window" for the redirect, because "$router" is not available in the store.
-          */
+          // We need to use a browser property "window" for the redirect, because "$router" is not available in the store.
           (window.location.href = "/")
         )
         .catch(function(error) {
-          console.log(error);
+          throw error;
         });
       commit("userInfoNull");
     }

@@ -72,14 +72,14 @@
             <v-col></v-col>
             <v-toolbar flat dense>
               <v-toolbar-items>
-                <v-btn to="/signup" text x-small rounded color="primary">{{
-                  $t("line6")
-                }}</v-btn>
+                <v-btn to="/signup" text x-small rounded color="primary">
+                  {{ $t("line6") }}
+                </v-btn>
                 <!-- line -->
                 <v-divider class="mx-4" inset vertical></v-divider>
-                <v-btn to="/forgot" text x-small color="primary">
-                  {{ $t("line7") }}
-                </v-btn>
+                <v-btn to="/forgot" text x-small color="primary">{{
+                  $t("line7")
+                }}</v-btn>
               </v-toolbar-items>
             </v-toolbar>
           </v-row>
@@ -116,8 +116,8 @@ export default {
         .then(() => {
           this.$router.push("/landing");
         })
-        .catch(e => {
-          console.log(e);
+        .catch(function(error) {
+          throw error;
         });
     },
 
@@ -129,21 +129,20 @@ export default {
         .then(() => {
           this.$router.push("/landing");
         })
-        .catch(e => {
-          console.log(e);
+        .catch(function(error) {
+          throw error;
         });
     },
 
     validate() {
-      console.log("email: ", this.email, "pwd: ", this.password);
       firebase
         .auth()
         .signInWithEmailAndPassword(this.email, this.password)
         .then(() => {
           this.$router.push("/landing");
         })
-        .catch(e => {
-          console.log(e);
+        .catch(function(error) {
+          throw error;
         });
     }
   }

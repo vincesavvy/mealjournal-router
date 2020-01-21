@@ -360,9 +360,9 @@
             </v-row>
           </v-container>
           <v-row align="center" justify="center">
-            <v-btn color="success" @click="confirmationBtn">
-              {{ $t("reviewBtn") }}
-            </v-btn>
+            <v-btn color="success" @click="confirmationBtn">{{
+              $t("reviewBtn")
+            }}</v-btn>
           </v-row>
         </v-form>
       </v-container>
@@ -400,9 +400,9 @@
           <v-list-item-content>
             <!-- name -->
             <v-list-item-title>{{ $t("reviewLine3") }}</v-list-item-title>
-            <v-list-item-subtitle class="mb-5">{{
-              this.form.mealName
-            }}</v-list-item-subtitle>
+            <v-list-item-subtitle class="mb-5">
+              {{ this.form.mealName }}
+            </v-list-item-subtitle>
             <!-- place -->
             <v-list-item-title>{{ $t("reviewLine4") }}</v-list-item-title>
             <v-list-item-subtitle
@@ -411,9 +411,9 @@
               :key="(i + 1) * 10"
               >{{ item }}</v-list-item-subtitle
             >
-            <v-list-item-subtitle class="mb-5">{{
-              form.placeOther
-            }}</v-list-item-subtitle>
+            <v-list-item-subtitle class="mb-5">
+              {{ form.placeOther }}
+            </v-list-item-subtitle>
             <!-- company -->
             <v-list-item-title>{{ $t("reviewLine5") }}</v-list-item-title>
             <v-list-item-subtitle
@@ -422,14 +422,14 @@
               :key="(i + 1) * 100"
               >{{ item }}</v-list-item-subtitle
             >
-            <v-list-item-subtitle class="mb-5">{{
-              form.withWhomOther
-            }}</v-list-item-subtitle>
+            <v-list-item-subtitle class="mb-5">
+              {{ form.withWhomOther }}
+            </v-list-item-subtitle>
             <!-- hunger -->
             <v-list-item-title>{{ $t("reviewLine6") }}</v-list-item-title>
-            <v-list-item-subtitle class="mb-5">{{
-              this.form.hunger
-            }}</v-list-item-subtitle>
+            <v-list-item-subtitle class="mb-5">
+              {{ this.form.hunger }}
+            </v-list-item-subtitle>
             <!-- mood before-->
             <v-list-item-title>{{ $t("reviewLine7") }}</v-list-item-title>
             <v-list-item-subtitle
@@ -438,14 +438,14 @@
               :key="(i + 1) * 1000"
               >{{ item }}</v-list-item-subtitle
             >
-            <v-list-item-subtitle class="mb-5">{{
-              form.moodBeforeOther
-            }}</v-list-item-subtitle>
+            <v-list-item-subtitle class="mb-5">
+              {{ form.moodBeforeOther }}
+            </v-list-item-subtitle>
             <!-- fullness -->
             <v-list-item-title>{{ $t("reviewLine8") }}</v-list-item-title>
-            <v-list-item-subtitle class="mb-5">{{
-              this.form.fullness
-            }}</v-list-item-subtitle>
+            <v-list-item-subtitle class="mb-5">
+              {{ this.form.fullness }}
+            </v-list-item-subtitle>
             <!-- protein -->
             <v-list-item-title>{{ $t("reviewLine9") }}</v-list-item-title>
             <v-list-item-subtitle
@@ -454,9 +454,9 @@
               :key="(i + 1) * 10000"
               >{{ item }}</v-list-item-subtitle
             >
-            <v-list-item-subtitle class="mb-5">{{
-              form.proteinOther
-            }}</v-list-item-subtitle>
+            <v-list-item-subtitle class="mb-5">
+              {{ form.proteinOther }}
+            </v-list-item-subtitle>
             <!-- veggies -->
             <v-list-item-title>{{ $t("reviewLine10") }}</v-list-item-title>
             <v-list-item-subtitle
@@ -465,9 +465,9 @@
               :key="(i + 1) * 100000"
               >{{ item }}</v-list-item-subtitle
             >
-            <v-list-item-subtitle class="mb-5">{{
-              form.veggiesOther
-            }}</v-list-item-subtitle>
+            <v-list-item-subtitle class="mb-5">
+              {{ form.veggiesOther }}
+            </v-list-item-subtitle>
             <!-- carbs -->
             <v-list-item-title>{{ $t("reviewLine11") }}</v-list-item-title>
             <v-list-item-subtitle
@@ -476,9 +476,9 @@
               :key="(i + 1) * 1000000"
               >{{ item }}</v-list-item-subtitle
             >
-            <v-list-item-subtitle class="mb-5">{{
-              form.carbsOther
-            }}</v-list-item-subtitle>
+            <v-list-item-subtitle class="mb-5">
+              {{ form.carbsOther }}
+            </v-list-item-subtitle>
             <!-- reason -->
             <v-list-item-title>{{ $t("reviewLine12") }}</v-list-item-title>
             <v-list-item-subtitle
@@ -487,9 +487,9 @@
               :key="(i + 1) * 10000000"
               >{{ item }}</v-list-item-subtitle
             >
-            <v-list-item-subtitle class="mb-5">{{
-              form.reasonOther
-            }}</v-list-item-subtitle>
+            <v-list-item-subtitle class="mb-5">
+              {{ form.reasonOther }}
+            </v-list-item-subtitle>
             <!-- mood after  -->
 
             <v-list-item-title>{{ $t("reviewLine13") }}</v-list-item-title>
@@ -499,9 +499,9 @@
               :key="item"
               >{{ item }}</v-list-item-subtitle
             >
-            <v-list-item-subtitle class="mb-5">{{
-              form.moodAfterOther
-            }}</v-list-item-subtitle>
+            <v-list-item-subtitle class="mb-5">
+              {{ form.moodAfterOther }}
+            </v-list-item-subtitle>
           </v-list-item-content>
         </v-list-item>
         <v-list-item>
@@ -639,9 +639,7 @@ export default {
     };
   },
   methods: {
-    /* eslint-disable no-alert, no-console */
     confirmationBtn() {
-      console.log("confirm the form");
       this.reviewModal = true;
     },
 
@@ -697,11 +695,10 @@ export default {
           id: id,
           uid: this.$store.getters.profileInfo.userID //See store for info
         })
-        .then(
-          ((this.reviewModal = false), this.resetForm),
-          console.log("The document was submitted properly.")
-        )
-        .catch(err => console.log(err));
+        .then(((this.reviewModal = false), this.resetForm))
+        .catch(function(error) {
+          throw error;
+        });
     }
   }
 };
