@@ -6,7 +6,8 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
-    user: null
+    user: null,
+    errorMessage: null
   },
   mutations: {
     setUserInfo(state, payload) {
@@ -14,6 +15,9 @@ export default new Vuex.Store({
     },
     userInfoNull(state) {
       state.user = null;
+    },
+    setErrorMessage(state, payload) {
+      state.errorMessage = payload;
     }
   },
   actions: {
@@ -41,11 +45,26 @@ export default new Vuex.Store({
           throw error;
         });
       commit("userInfoNull");
+    },
+
+    validate({ commit }, payload) {
+      firebase
+        .auth()
+        .signInWithEmailAndPassword(payload.email, payload.password)
+        .then(() => {
+          this.$router.push("/landing");
+        })
+        .catch(function(err) {
+          commit("setErrorMessage", err.message);
+        });
     }
   },
   getters: {
     profileInfo(state) {
       return state.user;
+    },
+    getError(state) {
+      return state.errorMessage;
     }
   },
   modules: {}

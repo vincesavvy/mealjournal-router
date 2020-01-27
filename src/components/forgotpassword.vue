@@ -50,9 +50,12 @@ export default {
     sendRecoveryEmail() {
       var auth = firebase.auth();
 
-      auth.sendPasswordResetEmail(this.email).catch(function(error) {
-        throw error;
-      });
+      auth
+        .sendPasswordResetEmail(this.email)
+        .catch(function(error) {
+          throw error;
+        })
+        .then((window.location.href = "/"));
     }
   }
 };

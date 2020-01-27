@@ -39,6 +39,10 @@
         <v-container>
           <p class="caption">{{ $t("line3") }}</p>
 
+          <v-alert type="warning" v-if="getErrorFromStore">{{
+            getErrorFromStore
+          }}</v-alert>
+
           <v-row align="center" justify="center">
             <v-form ref="form" v-model="valid" :lazy-validation="lazy">
               <v-text-field v-model="email" :rules="emailRules" required>
@@ -58,8 +62,8 @@
                 <v-btn
                   :disabled="!valid"
                   color="success"
-                  class="mr-4"
-                  @click="validate"
+                  class="mr-4 mt-4"
+                  @click="signIn"
                   >Validate</v-btn
                 >
               </div>
@@ -93,18 +97,22 @@
 import firebase from "firebase/app";
 
 export default {
-  data: () => ({
-    valid: true,
-    email: "",
-    emailRules: [
-      v => !!v || "Required / Requis",
-      v => /.+@.+\..+/.test(v) || "Not valid / Non valide"
-    ],
-    password: "",
-    passwordRules: [v => !!v || "Required / Requis"],
-    select: null,
-    lazy: false
-  }),
+  data() {
+    return {
+      passwordError: false,
+      error: "",
+      valid: true,
+      email: "",
+      emailRules: [
+        v => !!v || "Required / Requis",
+        v => /.+@.+\..+/.test(v) || "Not valid / Non valide"
+      ],
+      password: "",
+      passwordRules: [v => !!v || "Required / Requis"],
+      select: null,
+      lazy: false
+    };
+  },
 
   methods: {
     /* eslint-disable no-alert, no-console */
@@ -134,16 +142,36 @@ export default {
         });
     },
 
-    validate() {
-      firebase
-        .auth()
-        .signInWithEmailAndPassword(this.email, this.password)
-        .then(() => {
-          this.$router.push("/landing");
-        })
-        .catch(function(error) {
-          throw error;
-        });
+    signIn() {
+      this.$store.dispatch("validate", {
+        email: this.email,
+        password: this.password
+      });
+    }
+
+    // validate() {
+    //   firebase
+    //     .auth()
+    //     .signInWithEmailAndPassword(this.email, this.password)
+    //     .then(() => {
+    //       this.$router.push("/landing");
+    //     })
+    //     .catch(function(err) {
+    //       console.log(err);
+    //     })
+    //     .then(() => {
+    //       this.passwordError = true;
+    //       this.password = "";
+    //     });
+    // },
+    // displayError(e) {
+    //   console.log(e);
+    // }
+  },
+
+  computed: {
+    getErrorFromStore() {
+      return this.$store.getters.getError;
     }
   }
 };
@@ -159,7 +187,8 @@ export default {
     "line4": "Email",
     "line5": "Password",
     "line6": "new user sign-up",
-    "line7": "Forgot your password"
+    "line7": "Forgot your password",
+    "line-error": "Wrong email or password."
   },
   "fr": {
     "line1": "Afin d'utiliser l'application MealJournal, vous devrez vous connecter à votre compte.",
@@ -168,7 +197,9 @@ export default {
     "line4": "Courriel:",
     "line5": "Mot de passe",
     "line6": "nouvel utilisateur",
-    "line7": "oublié votre mot de passe"
+    "line7": "oublié votre mot de passe",
+    "line-error": "Courriel ou mot de passe incorrect."
+
   }
 }
 </i18n>
